@@ -1,0 +1,33 @@
+<%= form_for :info, url: {action: "create"}, html: {class: "form-group"} do | form | %>
+    <p>
+    <form>
+        <div class="form-row">
+                <div class="col-md-6">
+                    <%= text_field_tag :title, "", class: "form-control", placeholder: "Title" %>
+                </div>
+                <div class="col-md-6">
+                <div id="span_container">
+                </div>
+                    <%= text_field_tag :tags, "", id: "tag_field", class: "form-control", placeholder: "Tags" %>
+                </div>
+                <br>
+                <br>
+        </div>
+    </form>
+    </p>
+    <p>
+        <%= text_area_tag :body, "", size: "60x12", class: "form-control" %>
+    </p>
+    <p>
+        <%= form.submit "Create", class: "btn btn-primary" %>
+    </p>
+<% end %>
+
+<script>
+$("#tag_field").keypress(function(e) {
+    if(e.keyCode == 32 || e.keyCode == 13){
+        $("#span_container").append('<span class="label label-danger">'+$("#tag_field").val()+'</span>');
+        $("#tag_field").val("");
+    }
+  });
+</script>

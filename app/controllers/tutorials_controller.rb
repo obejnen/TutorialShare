@@ -1,11 +1,13 @@
 class TutorialsController < ApplicationController
+    tag_list = []
     def new
       @tutor = Tutorial.new
+      @tag_list = []
     end
   
     def create
       @tutorial = Tutorial.new(title: params[:title], body: params[:body])
-      @tags = Tag.new(content: params[:tags])
+      @tags << self.tag_list.each{|tag| Tag.new(tag)}
       @tutorial.tags << @tags
       current_user.tutorials << @tutorial
       redirect_to current_user.tutorials.last
