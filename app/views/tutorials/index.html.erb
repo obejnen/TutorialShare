@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="col-sm-9">
+        <% @tutorials.each do |tutor| %>
+          <h4><small>RECENT POSTS</small></h4>
+          <hr>
+          <h2><%= link_to "#{tutor.title}", "/tutorials/#{tutor.id}" %></h2>
+          <h5><span class="glyphicon glyphicon-time"></span> Post by <%= tutor.user.last.username %>, <%= tutor.created_at.to_s %>.</h5>
+          <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
+          <p><%= tutor.body %></p>
+          <br><br>
+        <% end %>
+    </div>
+  </div>

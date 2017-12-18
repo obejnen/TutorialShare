@@ -1,0 +1,15 @@
+<%= form_for @tutor, url: {action: "create"}, html: {class: "form-group"} do |f| %>
+<p>
+    <%= label_tag "Title" %>
+    <%= f.text_field :title, class: "form-control"%>
+</p>
+<p>
+    <%= label_tag "Tags" %>
+    <%= f.text_field :tags, class: "form-control"%>
+</p>
+<p>
+    <%= label_tag "Body" %>
+    <%= f.text_area :body, size: "60x12", class: "form-control"%>
+</p>
+<%= f.submit "Create", class: "btn btn-primary" %>
+<% end %>
