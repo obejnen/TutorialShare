@@ -4,9 +4,10 @@ class TutorialsController < ApplicationController
     end
   
     def create
-      @tutorial = Tutorial.new(params.require(:tutorial).permit(:title, :body))
-      @tags = Tag.new(params.require(:tag).permit(:content))
-      current_user.tutorials << Tutorial.new(params.require(:tutorial).permit(:title, :body))
+      @tutorial = Tutorial.new(title: params[:title], body: params[:body])
+      @tags = Tag.new(content: params[:tags])
+      @tutorial.tags << @tags
+      current_user.tutorials << @tutorial
       redirect_to current_user.tutorials.last
     end
   
