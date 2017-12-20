@@ -1,0 +1,7 @@
+$('#tutorials').append("<%= j render(@tutorials) %>");
+
+<% if @tutorials.next_page %>
+    $('.pagination').replaceWith("<%= j will_paginate(@tutorials, renderer: 'BootstrapPaginationHelper::LinkRenderer') %>");
+<% else %>
+    $('.pagination').remove();
+<% end %>

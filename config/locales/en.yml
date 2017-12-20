@@ -1,2 +1,14 @@
 en:
-  hello: "Hello world"
+  tutorials:
+    new:
+      title: 'New tutorial'
+    edit:
+      title: 'Tutorial edit'
+    form:
+      submit:
+        '%{action} tutorial'
+  common:
+    errors: 'Something went wrongs'
+    back: 'Back'
+    change: 'Edit'
+    delete: 'Delete'

@@ -54,8 +54,15 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
 gem 'autoprefixer-rails'
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick'
 gem 'trix'
 gem 'will_paginate', '~> 3.1.0'
+gem 'jquery-rails', '>= 1.3.6'
+gem 'barista'
+gem 'json'
+gem 'therubyracer', :require => nil

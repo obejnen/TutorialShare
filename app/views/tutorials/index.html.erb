@@ -1,3 +1,4 @@
-<%= render @tutorials %>
-
-<%= will_paginate @tutorials %>
+<section id="tutorials">
+    <%= render @tutorials %>
+</section>
+<%= will_paginate @tutorials, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>
