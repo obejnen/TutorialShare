@@ -44,7 +44,12 @@
         <% end %>
       </div>
     </div>
-    <%= yield %>
+    <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+      <%= link_to "#{tag.name}:#{tag.count}", tag_path(tag.name), class: css_class %>
+    <% end %>
+        <%= yield %>
+      </div>
+    </div>
   </div>
 </body>
 
