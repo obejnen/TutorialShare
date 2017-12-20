@@ -1,0 +1,14 @@
+ru:
+  tutorials:
+    new:
+      title: 'Новый туториал'
+    edit:
+      title: 'Редактирование туториала'
+    form:
+      submit:
+        '%{action} туториал'
+  common:
+    errors: 'При заполнении формы возникли ошибки'
+    back: 'Назад'
+    change: 'Изменить'
+    delete: 'Удалить'

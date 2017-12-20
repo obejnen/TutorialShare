@@ -1,8 +1,17 @@
-<p>
-    <strong>Title: </strong>
-    <%= @tutor.title %>
-</p>
-<p>
-    <strong>Body: </strong>
-    <%= @tutor.body %>
-</p>
+<article class="tutorial" %>
+    <section class="tutorial-head">
+        <h1><%= @tutorial.title %></h1>
+        <small>
+            <time><%= @tutorial.created_at.to_date.strftime('%d %B, %Y') %></time>
+            |
+            <%= link_to t('common.change'), edit_tutorial_path(@tutorial) %>
+            |
+            <%= link_to t('common.delete'), tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?'} %>
+        </small>
+    </section>
+
+    <section class='tutorial-body'>
+        <%= image_tag @tutorial.image.url(:large), class: 'img-show' if @tutorial.image? %>
+        <%= @tutorial.body.html_safe %>
+    </section>
+</article>

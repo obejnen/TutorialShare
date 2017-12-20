@@ -1,29 +1,50 @@
 class TutorialsController < ApplicationController
-    tag_list = []
-    def new
-      @tutor = Tutorial.new
-      @tag_list = []
-    end
-  
-    def create
-      @tutorial = Tutorial.new(title: params[:title], body: params[:body])
-      @tags << self.tag_list.each{|tag| Tag.new(tag)}
-      @tutorial.tags << @tags
-      current_user.tutorials << @tutorial
-      redirect_to current_user.tutorials.last
-    end
-  
-    # def create
-    #   @user = current_user
-    #   @tutor = @user.tutorials.build()
-    #   redirect_to tutorial_path(current_user)
-    # end
-  
-    def show
-      @tutor = Tutorial.find(params[:id])
-    end
-  
+
+    before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
+
     def index
-      @tutorials = Tutorial.all.sort_by{|m| m.created_at}.reverse
+        @tutorials = Tutorial.all
     end
-  end
+
+    def show
+    end
+
+    def new
+        @tutorial = Tutorial.new
+    end
+
+    def create
+        @tutorial = Tutorial.new(tutorial_params)
+        if @tutorial.save
+            redirect_to @tutorial, success: "Tutorial successfully created"
+        else
+            render :new, danger: "Tutorial doesn't created"
+        end
+    end
+
+    def edit
+    end
+
+    def update
+        if @tutorial.update_attributes(tutorial_params)
+            redirect_to @tutorial, success: 'Tutorial successfully updated'
+        else
+            render :edit, danger: 'Tutorial doesn\'t updated'
+        end
+    end
+
+    def destroy
+        @tutorial.destroy
+        redirect_to tutorials_path, success: "Tutorial success deleted"
+    end
+
+    private
+
+    def tutorial_params
+        params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags)
+    end
+
+    def set_tutorial
+        @tutorial = Tutorial.find(params[:id])
+    end
+end

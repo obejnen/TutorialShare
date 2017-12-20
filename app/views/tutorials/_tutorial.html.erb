@@ -1,11 +1,17 @@
-<div class="container-fluid">
-        <div class="col-sm-9">
-              <h4><small>RECENT POSTS</small></h4>
-              <hr>
-              <h2><%= link_to "#{tutorial.title}", "/tutorials/#{tutorial.id}" %></h2>
-              <h5><span class="glyphicon glyphicon-time"></span> Post by <%= tutorial.user.last.username %>, <%= tutorial.created_at.to_s %>.</h5>
-              <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
-              <p><%= tutorial.body %></p>
-              <br><br>
-            </div>
+
+<article class="tutorial">
+  <section class="tur=torial-head">
+    <section class="post-summary clearfix">
+      <div class="container-w3">
+        <%= image_tag  tutorial.image.url(:large), alt: "Notebook", style: "width:100%;" if tutorial.image? %>
+        <div class="content">
+          <h1><%= link_to tutorial.title, tutorial_path(tutorial) %></h1>
+          <p><%= tutorial.description %></p>
+          <div class="tags">
+            <%= raw tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
           </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</article>

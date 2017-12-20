@@ -1,0 +1,14 @@
+ru:
+  activerecord:
+    models:
+      tutorial: 'Туториал'
+    attributes:
+      tutorial:
+        title: 'Название'
+        description: 'Краткое описание'
+        body: 'Содержание'
+        image: 'Превью'
+        all_tags: 'Теги'
+    errors:
+      messages:
+        blank: 'не может быть пустым'

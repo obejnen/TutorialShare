@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   root "tutorials#index"
-  get 'tutorials/new'
-
-  get 'tutorial/new'
-
   resources :tutorials
+  resources :pictures, only: [:create, :destroy]
+  resources :tags, only: [ :show ]
 end

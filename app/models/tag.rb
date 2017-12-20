@@ -1,3 +1,4 @@
 class Tag < ApplicationRecord
-    has_and_belongs_to_many :tutorials
+    has_many :taggings
+    has_many :tutorials, through: :taggings
 end
