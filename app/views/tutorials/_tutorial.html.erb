@@ -1,11 +1,12 @@
-
+<div class="container" style="background-color: white">
+<a href="<%= tutorial_path(tutorial) %>" class="withoud-decoration" style="text-decoration:none">
 <article class="tutorial">
   <section class="tur=torial-head">
     <section class="post-summary clearfix">
       <div class="container-w3">
-        <%= image_tag  tutorial.image.url(:large), alt: "Notebook", style: "width:100%;" if tutorial.image? %>
+        <%= image_tag  tutorial.image.url(:large), alt: "Notebook", class: "preview_image" if tutorial.image? %>
         <div class="content">
-          <h1><%= link_to tutorial.title, tutorial_path(tutorial) %></h1>
+          <h1><%= tutorial.title %></h1>
           <p><%= tutorial.description %></p>
           <div class="tags">
             <%= raw tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
@@ -15,3 +16,6 @@
     </section>
   </section>
 </article>
+</a>
+</div>
+<br>

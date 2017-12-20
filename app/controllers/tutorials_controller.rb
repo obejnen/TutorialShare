@@ -3,7 +3,7 @@ class TutorialsController < ApplicationController
     before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
 
     def index
-        @tutorials = Tutorial.all
+        @tutorials = Tutorial.paginate(page: params[:page], per_page: 5)
     end
 
     def show
