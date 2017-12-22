@@ -1,9 +1,10 @@
-<div class="container" style="background-color: white">
+<div class="container" style="background-color: white;">
 <article class="tutorial" %>
     <section class="tutorial-head">
         <h1><%= @tutorial.title %></h1>
         <small>
             <time><%= @tutorial.created_at.to_date.strftime('%d %B, %Y') %></time>
+            <%= link_to @tutorial.category.name, @tutorial.category if @tutorial.category_id? %>
             |
             <%= link_to t('common.change'), edit_tutorial_path(@tutorial) %>
             |

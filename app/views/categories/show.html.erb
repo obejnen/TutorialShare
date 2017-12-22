@@ -1,0 +1,7 @@
+<h1><%= @category.name %></h1>
+
+<section id="tutorials">
+    <%= render @tutorials %>
+</section>
+
+<%= will_paginate @tutorials, renderer: 'BootstrapPaginationHelper::LinkRenderer' %>

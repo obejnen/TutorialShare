@@ -1,7 +1,8 @@
 class Tutorial < ApplicationRecord
     mount_uploader :image, ImageUploader
-    has_many :taggings
+    has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
+    belongs_to :category
     validates :title, :description, :body, presence: true
 
     def all_tags

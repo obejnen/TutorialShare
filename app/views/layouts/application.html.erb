@@ -8,7 +8,6 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -37,6 +36,9 @@
   <br>
   <div class="container">
     <div class="row">
+      <div class="col-xs-4">
+        <%= render 'shared/submenu' %>
+      </div>
       <div class="col-md-12">
         <% flash.each do |name, message| %>
           <div class="alert alert-<%= name %>">
@@ -45,10 +47,13 @@
         <% end %>
       </div>
     </div>
+    <div class="container container-big" style="background-color: white" %>
     <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
       <%= link_to "#{tag.name}:#{tag.count}", tag_path(tag.name), class: css_class %>
     <% end %>
+    </div>
         <%= yield %>
+      </div>
       </div>
     </div>
   </div>

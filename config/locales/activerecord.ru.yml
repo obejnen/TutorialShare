@@ -1,8 +1,11 @@
 ru:
   activerecord:
     models:
+      category: 'Категория'
       tutorial: 'Туториал'
     attributes:
+      category:
+        name: 'Название'
       tutorial:
         title: 'Название'
         description: 'Краткое описание'

@@ -18,7 +18,8 @@ class TutorialsController < ApplicationController
         if @tutorial.save
             redirect_to @tutorial, success: "Tutorial successfully created"
         else
-            render :new, danger: "Tutorial doesn't created"
+            flash.now[:danger] = "Tutorial doesn't created"
+            render :new
         end
     end
 
@@ -29,7 +30,8 @@ class TutorialsController < ApplicationController
         if @tutorial.update_attributes(tutorial_params)
             redirect_to @tutorial, success: 'Tutorial successfully updated'
         else
-            render :edit, danger: 'Tutorial doesn\'t updated'
+            flash.now[:danger] = "Tutorial doesn't updated"
+            render :edit
         end
     end
 
@@ -41,7 +43,7 @@ class TutorialsController < ApplicationController
     private
 
     def tutorial_params
-        params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags)
+        params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags, :category_id)
     end
 
     def set_tutorial
