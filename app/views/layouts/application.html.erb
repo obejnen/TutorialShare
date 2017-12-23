@@ -5,58 +5,91 @@
   <title>Tutor</title>
   <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <style>
+            
+            </style>
 </head>
 
-<body class="fixed-bg">
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">Tutorial</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        
-        <li>
-          <%= link_to "Create", "/tutorials/new" %>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-      </ul>
-    </div>
-  </nav>
-  <br>
-  <br>
-  <br>
-  <div class="container">
+<body class="fixed-bg" data-target=".navbar">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">TUTORIALHEAP</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">HOME</a></li>
+              <li><a href="/tutorials/new">CREATE</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+                <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Merchandise</a></li>
+                  <li><a href="#">Extras</a></li>
+                  <li><a href="#">Media</a></li> 
+                </ul>
+              </li>
+              <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+  <div class="main-container bg-white">
     <div class="row">
-      <div class="col-xs-4">
-        <%= render 'shared/submenu' %>
-      </div>
       <div class="col-md-12">
         <% flash.each do |name, message| %>
-          <div class="alert alert-<%= name %>">
+          <div class="alert <%= bootstrap_class_for(name) %>">
+            <button class="close" data-dismiss="alert">&times;</button>
             <%= message %>
           </div>
         <% end %>
       </div>
     </div>
-    <div class="container container-big" style="background-color: white" %>
-    <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
-      <%= link_to "#{tag.name}:#{tag.count}", tag_path(tag.name), class: css_class %>
-    <% end %>
-    </div>
+
+    <div class="row main">
+      <div class="col-md-3 bg-white">
+        <%= render 'shared/submenu' %>
+      </div>
+      <div class="col-md-7 bg-white">
         <%= yield %>
       </div>
+      <div class="col-md-2 bg-white">
+        <div class="tag_cloud">
+          <h2>Tags</h2>
+          <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+            <%= link_to "<span class='label label-primary transparent'>#{tag.name}</span>".html_safe,
+             tag_path(tag.name), class: css_class %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</body>
 
+  <button id="onTopBtn" class="on-top" onclick="topFunction()"><span class="glyphicon glyphicon-arrow-up"></span></button>
+
+  <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+              document.getElementById("onTopBtn").style.display = "block";
+          } else {
+              document.getElementById("onTopBtn").style.display = "none";
+          }
+      }
+      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+      }
+      </script>
+</body>
 </html>

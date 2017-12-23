@@ -1,21 +1,24 @@
-<div class="container" style="background-color: white">
-<a href="<%= tutorial_path(tutorial) %>" class="withoud-decoration" style="text-decoration:none">
-<article class="tutorial">
-  <section class="torial-head">
-    <section class="post-summary clearfix">
-      <div class="container-w3">
-        <%= image_tag  tutorial.image.url(:large), alt: "Notebook", class: "preview_image" if tutorial.image? %>
-        <div class="content">
-          <p><h1><%= tutorial.title %></h1></p>
-          <p><h2><%= tutorial.description %></h2></p>
-          <div class="tags">
-            <%= raw tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
-          </div>
+<div>
+  <article>
+    <section>
+      <article class="underline">
+        <h1>
+          <a href="<%= tutorial_path(tutorial) %>" style="text-decoration:none;">
+            <%= tutorial.title %>
+          </a>
+        </h1>
+          by zxdsl093 at
+          <%= tutorial.created_at.to_date.strftime("%d %B, %Y") %>
+        <div class="tags">
+          <%= raw tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
         </div>
-      </div>
+        <h2 class="description">
+          <%= tutorial.description %>
+        </h2>
+        <a href="<%= tutorial_path(tutorial) %>" style="text-decoration:none;">
+          <%= image_tag  tutorial.image.url(:large), class: "preview-image" if tutorial.image? %>
+        </a>
+      </article>
     </section>
-  </section>
-</article>
-</a>
+  </article>
 </div>
-<br>

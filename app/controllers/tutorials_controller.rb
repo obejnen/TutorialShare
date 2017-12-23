@@ -28,7 +28,8 @@ class TutorialsController < ApplicationController
 
     def update
         if @tutorial.update_attributes(tutorial_params)
-            redirect_to @tutorial, success: 'Tutorial successfully updated'
+            flash.now[:success] = "Tutorial doesn't updated"            
+            redirect_to @tutorial
         else
             flash.now[:danger] = "Tutorial doesn't updated"
             render :edit
