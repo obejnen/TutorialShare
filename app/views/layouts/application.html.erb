@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>Tutor</title>
   <%= csrf_meta_tags %>
@@ -26,15 +25,18 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="/">HOME</a></li>
               <li><a href="/tutorials/new">CREATE</a></li>
+              <% if user_signed_in? %>
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.username %>
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Merchandise</a></li>
-                  <li><a href="#">Extras</a></li>
-                  <li><a href="#">Media</a></li> 
+                  <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>              
                 </ul>
               </li>
+              <% else %>
+                <li><%= link_to "SIGN UP", new_user_registration_path %></li>
+                <li><%= link_to "SIGN IN", new_user_session_path %></li>
+              <% end %>
               <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
             </ul>
           </div>

@@ -1,6 +1,7 @@
 class TutorialsController < ApplicationController
 
     before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
+    before_action :authenticate_user!, except: [:show, :index]
 
     def index
         @tutorials = Tutorial.paginate(page: params[:page], per_page: 5)
@@ -44,7 +45,7 @@ class TutorialsController < ApplicationController
     private
 
     def tutorial_params
-        params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags, :category_id)
+        params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags, :category_id).merge(user_id: current_user.id)
     end
 
     def set_tutorial

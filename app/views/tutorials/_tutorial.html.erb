@@ -7,7 +7,7 @@
             <%= tutorial.title %>
           </a>
         </h1>
-          by zxdsl093 at
+          by <%= tutorial.user.username if tutorial.user? %> at
           <%= tutorial.created_at.to_date.strftime("%d %B, %Y") %>
         <div class="tags">
           <%= raw tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>

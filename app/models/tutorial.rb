@@ -3,6 +3,7 @@ class Tutorial < ApplicationRecord
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
     belongs_to :category
+    belongs_to :user
     validates :title, :description, :body, presence: true
 
     def all_tags
