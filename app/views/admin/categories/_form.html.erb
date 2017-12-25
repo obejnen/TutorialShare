@@ -9,7 +9,7 @@
 </div>
 <% end %>
 
-<%= form_for @category, html: { multipart: true } do |f| %>
+<%= form_for [:admin, @category], html: { multipart: true } do |f| %>
     <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: 'form-control', autofocus: true, maxlength: 40 %>

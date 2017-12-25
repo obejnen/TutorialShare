@@ -8,11 +8,13 @@
         <small>
             post by zxdsl093 at 
             <time><%= @tutorial.created_at.to_date.strftime('%d %B, %Y') %></time>
-            <%= link_to @tutorial.category.name, @tutorial.category if @tutorial.category_id? %>
+            <%= link_to @tutorial.category.name, @tutorial.category %>
+            <% if user_signed_in? && current_user.admin? && @tutorial.user == current_user %>
             |
             <%= link_to t('common.change'), edit_tutorial_path(@tutorial) %>
             |
             <%= link_to t('common.delete'), tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?'} %>
+            <% end %>
         </small>
     </section>
     

@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   resources :tutorials
   resources :pictures, only: [:create, :destroy]
   resources :tags, only: [ :show ]
-  resources :categories
+  resources :categories, only: [:show ]
+
+  namespace :admin do
+    resources :categories, except: [:show ]
+  end
 end
