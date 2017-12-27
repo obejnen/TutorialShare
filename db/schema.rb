@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(version: 20171227191142) do
     t.string "image"
     t.integer "category_id"
     t.integer "user_id"
-    t.string "url"
     t.index ["category_id"], name: "index_tutorials_on_category_id"
     t.index ["user_id"], name: "index_tutorials_on_user_id"
   end
@@ -85,7 +84,6 @@ ActiveRecord::Schema.define(version: 20171227191142) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.boolean "admin", default: false
-    t.integer "comment_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

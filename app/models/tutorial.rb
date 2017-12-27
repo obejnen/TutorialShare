@@ -6,7 +6,7 @@ class Tutorial < ApplicationRecord
     # has_many :commenting
     # has_many :comments, through: :commenting
 
-    has_many :comments, as: :commentable
+    has_many :comments, as: :commentable, dependent: :destroy
     belongs_to :category
     belongs_to :user
     validates :title, :description, :body, presence: true

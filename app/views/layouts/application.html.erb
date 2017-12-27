@@ -63,6 +63,7 @@
         <%= yield %>
       </div>
       <div class="col-md-2 bg-white">
+        <% unless Tag.all.empty? %>
         <div class="tag_cloud">
           <h2>Tags</h2>
           <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
@@ -70,6 +71,7 @@
              tag_path(tag.name), class: css_class %>
           <% end %>
         </div>
+        <% end %>
       </div>
     </div>
   </div>
