@@ -1,0 +1,4 @@
+<li>
+    <%= comment.body %> -
+    <small>Submitted <%= @tutorial.created_at.to_date.strftime('%d %B, %Y') %> ago by <%= comment.user.username %></small>
+</li>

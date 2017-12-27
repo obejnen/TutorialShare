@@ -16,7 +16,7 @@
           <%= tutorial.description %>
         </h2>
         <a href="<%= tutorial_path(tutorial) %>" style="text-decoration:none;">
-          <%= image_tag  tutorial.image.url(:large), class: "preview-image" if tutorial.image? %>
+          <%= image_tag tutorial.image.url(:large), class: "preview-image" if tutorial.image? %>
         </a>
       </article>
     </section>

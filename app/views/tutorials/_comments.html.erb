@@ -1,0 +1,4 @@
+<% @tutorial.comments.each do |comment| %>
+    <%= comment.body %>
+    posted by <%= comment.user.username %>
+<% end %>

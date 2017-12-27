@@ -1,29 +1,47 @@
 <div>
-<article>
-    <section class="tutorial-head">
-        <h1><%= @tutorial.title %></h1>
-        <div class="tags">
-            <%= raw @tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
-        </div>
-        <small>
-            post by zxdsl093 at 
-            <time><%= @tutorial.created_at.to_date.strftime('%d %B, %Y') %></time>
-            <%= link_to @tutorial.category.name, @tutorial.category %>
-            <% if user_signed_in? && current_user.admin? && @tutorial.user == current_user %>
-            |
-            <%= link_to t('common.change'), edit_tutorial_path(@tutorial) %>
-            |
-            <%= link_to t('common.delete'), tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?'} %>
-            <% end %>
-        </small>
-    </section>
-    
-    <section class="tutorial-preview">
-        <%= image_tag @tutorial.image.url(:large), class: 'img-show' if @tutorial.image? %>
-    </section>
+    <article>
+        <section class="tutorial-head">
+            <h1>
+                <%= @tutorial.title %>
+            </h1>
+            <div class="tags">
+                <%= raw @tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
+            </div>
+            <small>
+                post by
+                <%= @tutorial.user.username %> at
+                    <time>
+                        <%= @tutorial.created_at.to_date.strftime('%d %B, %Y') %>
+                    </time>
+                    <%= link_to @tutorial.category.name, @tutorial.category %>
+                        <% if user_signed_in? && current_user.admin? && @tutorial.user == current_user %>
+                            |
+                            <%= link_to t('common.change'), edit_tutorial_path(@tutorial) %>
+                                |
+                                <%= link_to t('common.delete'), tutorial_path(@tutorial), method: :delete, data: { confirm: 'Are you sure?'} %>
+                                    <% end %>
+            </small>
+        </section>
 
-    <section class="tutorial-body">
-        <%= @tutorial.body.html_safe %>
-    </section>
-</article>
+        <section class="tutorial-preview">
+            <%= image_tag @tutorial.image.url(:large), class: 'img-show' if @tutorial.image? %>
+        </section>
+
+        <section class="tutorial-body">
+            <%= @tutorial.body.html_safe %>
+        </section>
+
+        <section class="tutorial-comments">
+            <h3>Comments</h3>
+
+            <%= form_for [@tutorial, Comment.new] do |f| %>
+                <%= f.text_area :body, placeholder: "Add a comment" %>
+                <br/>
+                <%= f.submit "Add Comment" %>
+            <% end %>
+            <ul>
+                <%= render(partial: 'comments/comment', collection: @tutorial.comments) %>
+            </ul>
+        </section>
+    </article>
 </div>

@@ -2,6 +2,11 @@ class Tutorial < ApplicationRecord
     mount_uploader :image, ImageUploader
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
+
+    # has_many :commenting
+    # has_many :comments, through: :commenting
+
+    has_many :comments, as: :commentable
     belongs_to :category
     belongs_to :user
     validates :title, :description, :body, presence: true

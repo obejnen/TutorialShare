@@ -23,14 +23,17 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "ADMIN PANEL", admin_panel_path %></li>
               <li><a href="/">HOME</a></li>
               <li><a href="/tutorials/new">CREATE</a></li>
               <% if user_signed_in? %>
+              <li>
+                  <%#= image_tag current_user.avatar, class: 'img-show' if current_user.avatar? %>
+              </li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.username %>
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                  <li><%= link_to "Profile", users_path %></li>
                   <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>              
                 </ul>
               </li>

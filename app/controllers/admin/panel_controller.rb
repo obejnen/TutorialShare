@@ -1,8 +1,16 @@
-class Admin::PanelController < AppliactionController
+class Admin::PanelController < ApplicationController
     before_action :authenticate_user!
     before_action :check_for_admin
 
     def index
+    end
+
+    def tutorials
+        @tutorials = Tutorial.all
+    end
+
+    def users
+        @users = User.all
     end
 
     protected

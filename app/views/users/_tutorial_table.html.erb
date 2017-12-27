@@ -1,0 +1,25 @@
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% current_user.tutorials.each_with_index do |tutorial, index| %>
+                    <tr>
+                        <td>
+                            <%= index + 1 %>
+                        </td>
+                        <td>
+                            <%= tutorial.title %>
+                        </td>
+                        <td>
+                            <%= link_to 'Edit', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm" %>
+                            <%= link_to 'Delete', tutorial_path(tutorial), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+                        </td>
+                    </tr>
+                    <% end %>
+            </tbody>
+        </table>

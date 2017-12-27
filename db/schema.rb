@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225160447) do
+ActiveRecord::Schema.define(version: 20171227191142) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20171225160447) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_categorrings_on_category_id"
     t.index ["tutorial_id"], name: "index_categorrings_on_tutorial_id"
+  end
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text "body"
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "pictures", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -57,6 +66,7 @@ ActiveRecord::Schema.define(version: 20171225160447) do
     t.string "image"
     t.integer "category_id"
     t.integer "user_id"
+    t.string "url"
     t.index ["category_id"], name: "index_tutorials_on_category_id"
     t.index ["user_id"], name: "index_tutorials_on_user_id"
   end
@@ -75,6 +85,7 @@ ActiveRecord::Schema.define(version: 20171225160447) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.boolean "admin", default: false
+    t.integer "comment_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
