@@ -1,3 +1,15 @@
-<% current_user.tutorials.each do |tutorial| %>
-    <p><%= tutorial.title %></p>
-<% end %>
+<div>
+    <article>
+        <section class="tutorial-head">
+            <h1>
+                <%= @user.username %>
+            </h1>
+        </section>
+
+        <section class="tutorial-body">
+            e-mail: <%= @user.email %><br>
+            tutorials: <%= @user.tutorials.length %><br>
+            comment: <%= @user.comments.length %>
+        </section>
+    </article>
+</div>
