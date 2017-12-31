@@ -2,6 +2,8 @@ class Admin::PanelController < ApplicationController
     before_action :authenticate_user!
     before_action :check_for_admin
 
+    layout "admin_layout"
+
     def index
     end
 

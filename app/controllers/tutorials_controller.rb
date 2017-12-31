@@ -50,5 +50,6 @@ class TutorialsController < ApplicationController
 
     def set_tutorial
         @tutorial = Tutorial.find(params[:id])
+        @comments = @tutorial.comments
     end
 end

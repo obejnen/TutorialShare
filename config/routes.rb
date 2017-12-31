@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :categories, only: [:show ]
   # resources :users
   get '/admin/panel', to: 'admin/panel#index'
+  get '/admin/users', to: 'admin/users#index'
+  get '/admin/panel/tutorials', to: 'panel#tutorials'
 
   resources :tutorials do
     resources :comments
@@ -15,12 +17,14 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :comments
-    resources :users
+    resources :users, except: [:index]
   end
   
   resources :comments
 
   namespace :admin do
     resources :categories, except: [:show ]
+    resources :tutorials, only: [:index]
+    resources :users, only: [:index]
   end
 end

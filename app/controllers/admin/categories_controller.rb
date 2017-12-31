@@ -1,6 +1,8 @@
 class Admin::CategoriesController < ApplicationController
     before_action :set_category, only: [:edit, :destroy, :update]
 
+    layout "admin_layout"
+
     def index
         @categories = Category.all
     end

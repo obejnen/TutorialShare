@@ -34,7 +34,7 @@
         <section class="tutorial-comments">
             <h3>Comments</h3>
             <%= render(partial: 'comments/form') %>
-            <%= render(partial: 'comments/comment', collection: @tutorial.comments) %>
+            <%= render @comments %>
         </section>
     </article>
 </div>
