@@ -1,7 +1,5 @@
-class Admin::TutorialsController < ApplicationController
-    layout "admin_layout"
-
+class Admin::TutorialsController < Admin::AdminController
     def index
-        @tutorial = Tutorial.all
+        @tutorials = Tutorial.all
     end
 end

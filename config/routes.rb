@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   resources :categories, only: [:show ]
   # resources :users
   get '/admin/panel', to: 'admin/panel#index'
+  get "/users/:user_id/tutorials", to: "users#tutorials"
+  get "/users/:user_id/comments", to: "users#comments"
   # get '/admin/users', to: 'admin/users#index'
-  get '/admin/panel/tutorials', to: 'panel#tutorials'
+  # get '/admin/panel/tutorials', to: 'panel#tutorials'
 
   resources :tutorials do
     resources :comments

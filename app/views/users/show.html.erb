@@ -4,6 +4,7 @@
             <h1>
                 <%= @user.username %>
             </h1>
+            <%= link_to "Tutorials", "/users/#{@user.id}/tutorials" %>
         </section>
 
         <section class="tutorial-body">
