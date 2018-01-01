@@ -3,9 +3,6 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   has_many :tutorials
-
-  # has_many :commenting
-  # has_many :comments, through: :commenting
   
   has_many :comments
 
