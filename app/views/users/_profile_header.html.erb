@@ -1,0 +1,7 @@
+<section class="tutorial-head">
+    <h1>
+        <%= link_to @user.username, user_path(@user) %>
+    </h1>
+    <%= link_to "Tutorials", "/users/#{@user.id}/tutorials", class: "btn btn-sm btn-success" %>
+    <%= link_to "Comments", "/users/#{@user.id}/comments", class: "btn btn-sm btn-warning" %>
+</section>
