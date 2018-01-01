@@ -1,31 +1,28 @@
-<table class="table">
+<table class="table" id="commentsTable">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Body</th>
-                <th>Author</th>
-                <th>Tutorial</th>
-                <th></th>
+                <th><a onclick="sortTable(0, 'commentsTable')">Body</a></th>
+                <th><a onclick="sortTable(1, 'commentsTable')">Author</a></th>
+                <th><a onclick="sortTable(2, 'commentsTable')">Tutorial</a></th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <% @comments.all.each_with_index do |comment, index| %>
+            <% @comments.each do |comment| %>
                 <tr>
                     <td>
-                        <%= index + 1 %>
-                    </td>
-                    <td>
-                        <%=comment.body[0..15]%>
+                        <%= comment.body[0..15]%>
                     </td>
                     <td>
                         <%= comment.user.username %>
                     </td>
                     <td>
-                        <%= link_to comment.tutorial.title, tutorial_path(comment.tutorial) %>
+                        <%= comment.tutorial.title %>
                     </td>
                     <td>
-                        <%= link_to 'Edit', "", class: "btn btn-primary btn-sm" %>
-                        <%= link_to 'Delete', "", method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+                        <%= link_to 'Profile', user_path(comment.user), class: "btn btn-info btn-sm" %>
+                        <%= link_to 'Tutorial', tutorial_path(comment.tutorial), class: "btn btn-success btn-sm" %>
+                        <%= link_to 'Delete', comment_path(comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
                     </td>
                 </tr>
                 <% end %>

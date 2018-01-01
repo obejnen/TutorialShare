@@ -1,25 +1,27 @@
-<table class="table">
+<table class="table" id="tutorialsTable">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Author</th>
-            <th></th>
+            <th><a onclick="sortTable(0, 'tutorialsTable')">Title</a></th>
+            <th><a onclick="sortTable(1, 'tutorialsTable')">Category</a></th>
+            <th><a onclick="sortTable(1, 'tutorialsTable')">Author</a></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <% @tutorials.all.each_with_index do |tutorial, index| %>
+        <% @tutorials.each do |tutorial| %>
             <tr>
                 <td>
-                <%= index + 1 %>
-                    </td>
-                <td>
-                    <%= link_to tutorial.title, tutorial_path(tutorial) %>
+                    <%= tutorial.title %>
                 </td>
                 <td>
-                    <%= link_to tutorial.user.username, user_path(tutorial.user) %>
+                    <%= tutorial.category.name %>
                 </td>
                 <td>
+                    <%= tutorial.user.username %>
+                </td>
+                <td>
+                    <%= link_to 'Profile', user_path(tutorial.user), class: "btn btn-info btn-sm" %>
+                    <%= link_to 'Tutorial', tutorial_path(tutorial), class: "btn btn-success btn-sm" %>
                     <%= link_to 'Edit', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm" %>
                     <%= link_to 'Delete', tutorial_path(tutorial), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
                 </td>

@@ -5,28 +5,5 @@
 <div class="buttons_panel">
     <%= link_to 'New category', new_admin_category_path, class: "btn btn-primary btn-sm" %>
 </div>
-
-<section id="categories">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @categories.each_with_index do |category, index| %>
-                <tr>
-                    <td><%= index + 1 %></td>
-                    <td><%= category.name %></td>
-                    <td>
-                        <%= link_to 'Edit', edit_admin_category_path(category), class: "btn btn-primary btn-sm" %>
-                        <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-</section>
+<%= render "categories_table" %>
 </div>

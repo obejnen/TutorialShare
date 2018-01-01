@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user_show, only: [:show]
-    before_action :set_user_contents, only: [:tutorials]
+    before_action :set_user_contents, only: [:tutorials, :comments]
 
 
     def show

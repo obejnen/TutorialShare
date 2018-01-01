@@ -1,21 +1,22 @@
-<table class="table">
+<table class="table" id="tutorialsTable">
         <thead>
             <tr>
-                <th>#</th>
-                <th>Title</th>
+                <th><a onclick="sortTable(0, 'tutorialsTable')">Title</a></th>
+                <th><a onclick="sortTable(1, 'tutorialsTable')">Category</a></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <% @tutorials.all.each_with_index do |tutorial, index| %>
+            <% @tutorials.each do |tutorial| %>
                 <tr>
                     <td>
-                    <%= index + 1 %>
-                        </td>
-                    <td>
-                        <%= link_to tutorial.title, tutorial_path(tutorial) %>
+                        <%= tutorial.title %>
                     </td>
                     <td>
+                        <%= tutorial.category.name %>
+                    </td>
+                    <td>
+                        <%= link_to 'Tutorial', tutorial_path(tutorial), class: "btn btn-success btn-sm" %>
                         <%= link_to 'Edit', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm" %>
                         <%= link_to 'Delete', tutorial_path(tutorial), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
                     </td>
