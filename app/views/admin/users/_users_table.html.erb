@@ -3,7 +3,8 @@
             <tr>
                 <th><a onclick="sortTable(0, 'usersTable')">Username</a></th>
                 <th><a onclick="sortTable(1, 'usersTable')">Email</a></th>
-                <th>Status</th>
+                <th><a onclick="sortTable(2, 'usersTable')">Role</a></th>
+                <th><a onclick="sortTable(3, 'usersTable')">Status</a></th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,12 +18,16 @@
                         <%= user.email %>
                     </td>
                     <td>
-                        <%= user.status %>
+                        <%= role(user) %>
+                    </td>
+                    <td>
+                        <%= status(user) %>
                     </td>
                     <td>
                         <%= link_to 'Profile', user_path(user), class: "btn btn-info btn-sm" %>
                         <%= link_to 'Edit', edit_user_registration_path(user), class: "btn btn-primary btn-sm" %>
-                        <%= link_to 'Delete', user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+                        <%= link_to 'Change Role', "/admin/users/#{user.id}/chrole", class: "btn btn-warning btn-sm" %>
+                        <%= link_to ban_btn_text(user), "/admin/users/#{user.id}/ban", class: "btn btn-danger btn-sm" %>
                     </td>
                 </tr>
                 <% end %>

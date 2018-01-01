@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :categories, only: [:show ]
   # resources :users
   get '/admin/panel', to: 'admin/panel#index'
+  get '/admin/:user_id/ban', to: 'users#ban'
+  get '/admin/users/:id/chrole', to: 'admin/users#change_role'
+  get '/admin/users/:id/ban', to: 'admin/users#ban'
   get "/users/:user_id/tutorials", to: "users#tutorials"
   get "/users/:user_id/comments", to: "users#comments"
   # get '/admin/users', to: 'admin/users#index'

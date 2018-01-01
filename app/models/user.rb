@@ -18,8 +18,4 @@ class User < ApplicationRecord
   def login
     @login || self.username || self.email
   end
-
-  def status
-    "Banned" if self.banned? else "OK"
-  end
 end
