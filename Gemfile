@@ -70,3 +70,4 @@ gem 'therubyracer', :require => nil
 gem 'devise'
 gem 'jquery-ui-rails'
 gem 'ransack'
+gem 'cloudinary'

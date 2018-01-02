@@ -9,7 +9,6 @@ document.addEventListener("turbolinks:load", function() {
       categories: [
         {
           listLocation: "tutorials",
-          header: "<strong>Tutorials</strong>",
         }
       ],
       list: {

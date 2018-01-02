@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: railsimagecloud
+  api_key: '984753989472299'
+  api_secret: x3Qi_omT-_dYS4ydUce7zfu2Qw0
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: railsimagecloud
+  api_key: '984753989472299'
+  api_secret: x3Qi_omT-_dYS4ydUce7zfu2Qw0
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: railsimagecloud
+  api_key: '984753989472299'
+  api_secret: x3Qi_omT-_dYS4ydUce7zfu2Qw0
+  enhance_image_tag: true
+  static_image_support: false
