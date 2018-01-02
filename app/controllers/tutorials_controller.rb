@@ -2,6 +2,7 @@ class TutorialsController < ApplicationController
 
     before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
     before_action :authenticate_user!, except: [:show, :index]
+    before_action :force_json, only: [:search]
 
     def index
         @tutorials = Tutorial.paginate(page: params[:page], per_page: 5)
@@ -42,6 +43,28 @@ class TutorialsController < ApplicationController
         redirect_to tutorials_path, success: "Tutorial success deleted"
     end
 
+    def autocomplete
+        @tutorials = Tutorial.ransack(title_cont: params[:q]).result(distinct: true).limit(5)
+    end
+
+    def search
+        @tutorials = Tutorial.ransack(title_cont: params[:q]).result(distinct: true)
+        respond_to do |format|
+            format.html {}
+            format.json {
+                @tutorials.limit(5)
+            }
+        end
+        # @in_comment_result = []
+        # Comment.all.each do |comment|
+        #     @in_comment_result << comment.tutorial if comment.body.include? (params[:q])
+        # end
+
+        # @tutorials = @in_body_result | @in_comment_result
+
+        # render json: @tutorials
+    end
+
     private
 
     def tutorial_params
@@ -51,5 +74,9 @@ class TutorialsController < ApplicationController
     def set_tutorial
         @tutorial = Tutorial.find(params[:id])
         @comments = @tutorial.comments
+    end
+
+    def force_json
+        request.format = :json
     end
 end

@@ -69,3 +69,4 @@ gem 'json'
 gem 'therubyracer', :require => nil
 gem 'devise'
 gem 'jquery-ui-rails'
+gem 'ransack'

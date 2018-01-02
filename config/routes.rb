@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :pictures, only: [:create, :destroy]
   resources :tags, only: [ :show ]
   resources :categories, only: [:show ]
+  get :search, controller: :tutorials
+  get :autocomplete, controller: :tutorials
   # resources :users
   get '/admin/panel', to: 'admin/panel#index'
   get '/admin/:user_id/ban', to: 'users#ban'
