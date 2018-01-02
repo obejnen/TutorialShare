@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
+  ratyrate_rater
 
   has_many :tutorials
   

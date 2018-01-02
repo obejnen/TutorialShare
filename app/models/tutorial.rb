@@ -1,14 +1,13 @@
 class Tutorial < ApplicationRecord
     mount_uploader :image, ImageUploader
+    ratyrate_rateable "rating"
+
     has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
-
-    # has_many :commenting
-    # has_many :comments, through: :commenting
-
     has_many :comments, as: :commentable, dependent: :destroy
     belongs_to :category
     belongs_to :user
+
     validates :title, :description, :body, presence: true
 
     def all_tags

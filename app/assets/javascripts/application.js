@@ -14,6 +14,8 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require rails-ujs
+//= require jquery.raty
+//= require ratyrate
 //= require search
 //= require turbolinks
 //= require jquery.easy-autocomplete
