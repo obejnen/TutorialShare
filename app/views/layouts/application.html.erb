@@ -25,9 +25,9 @@
             <ul class="nav navbar-nav navbar-left">
               <li><a href="/">HOME</a></li>
               <li><a href="/tutorials/new">CREATE</a></li>
-              <%= form_with url: search_path, local: true, method: :get, html: { class: "navbar-form navbar-left navbar-inline" } do |f| %>
-                <%= f.text_field :q, placeholder: "Search", data: { behavior: 'autocomplete' }, class: "form-control col-xs-2" %>
-                <%= f.button "Search", class: "btn btn-default" %>
+              <%= form_with url: search_path, local: true, method: :get, html: { class: "navbar-form navbar-left navbar-form-inline" } do |f| %>
+              <%= f.text_field :q, placeholder: "Search", data: { behavior: 'autocomplete' }, class: "form-control form-control-inline" %>
+              <%#= f.button "Search", class: "btn btn-default btn-inline" %>
               <% end %>
             </ul>
             <ul class="nav navbar-nav navbar-right">

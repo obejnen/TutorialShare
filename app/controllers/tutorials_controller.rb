@@ -48,22 +48,15 @@ class TutorialsController < ApplicationController
     end
 
     def search
-        @tutorials = Tutorial.ransack(title_cont: params[:q]).result(distinct: true)
+        @tutorials = Tutorial.ransack(body_or_title_or_description_cont: params[:q]).result(distinct: true)
+        @tutorials |= Comment.ransack(body_cont: params[:q]).result(distinct: true).map(&:tutorial)
         respond_to do |format|
             format.html {}
             format.json {
-                @tutorials.limit(5)
+                @tutorials
             }
         end
-        # @in_comment_result = []
-        # Comment.all.each do |comment|
-        #     @in_comment_result << comment.tutorial if comment.body.include? (params[:q])
-        # end
-
-        # @tutorials = @in_body_result | @in_comment_result
-
-        # render json: @tutorials
-    end
+        end
 
     private
 
