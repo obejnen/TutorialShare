@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     before_action :find_commentable
     before_action :set_comment, only: [:destroy]
     before_action :set_comment_to_like, only: [:like]
-    respond_to :js, :json, :html
+    respond_to :js, :html
 
     def new
         @comment = Comment.new
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
         else
             @comment.unliked_by current_user
         end
-        redirect_to root_path
+        # redirect_to root_path
     end
 
     private

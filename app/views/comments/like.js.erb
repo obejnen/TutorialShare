@@ -1,1 +1,8 @@
-$(".likes-count").html("<%=@comment.get_likes.size %>")
+<% if current_user.liked? @comment %>
+    $(".like-btn-<%= @comment.id %>").removeClass('fa-thumbs-up')
+    $('.like-btn-<%= @comment.id %>').addClass('fa-thumbs-down')
+<% else %>
+    $('.like-btn-<%= @comment.id %>').addClass('fa-thumbs-up')
+    $('.like-btn-<%= @comment.id %>').removeClass('fa-thumbs-down')    
+<% end %>
+$(".likes-count-<%= @comment.id %>").html("<%=@comment.get_likes.size %>")

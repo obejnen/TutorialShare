@@ -10,10 +10,10 @@
                     <%= comment.body %>
                 </p>
             </div>
-            <%= link_to like_tutorial_comment_path(comment), method: :put do %>
-                <span onclick="toggleLikeButton(this)" class="fa fa-thumbs-up"></span>
+            <%= link_to like_tutorial_comment_path(comment), method: :put, remote: true do %>
+            <span class="fa fa-btn like-btn-<%= comment.id %> fa-1x fa-thumbs-<%= current_user.liked?(comment) ? "down" : "up" %>"></span>
             <% end %>
-            Count: <%= comment.get_likes.size %>
+            Liked: <span class="likes-count-<%= comment.id %>"><%= comment.get_likes.size %></span>
         </div>
     </div>
 </div>
