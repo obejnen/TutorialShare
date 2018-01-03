@@ -9,7 +9,7 @@
         </thead>
         <tbody>
             <% @comments.each do |comment| %>
-                <tr>
+                <tr id="comment-<%= comment.id %>">
                     <td>
                         <%= comment.body[0..15]%>
                     </td>
@@ -17,7 +17,6 @@
                         <%= comment.user.username %>
                     </td>
                     <td>
-                        <%= comment.tutorial.title %>
                     </td>
                     <td>
                         <%= link_to 'Profile', user_path(comment.user), class: "btn btn-info btn-sm" %>

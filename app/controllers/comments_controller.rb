@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
     before_action :find_commentable
     before_action :set_comment, only: [:destroy]
     before_action :set_comment_to_like, only: [:like]
-    respond_to :js, :html
+    respond_to :js, :json, :html
 
     def new
         @comment = Comment.new
@@ -13,11 +13,6 @@ class CommentsController < ApplicationController
         @comment = @commentable.comments.new(comment_params)
         @comment.save
         redirect_to @commentable
-        # if @comment.save
-        #     redirect_to @commentable
-        # else
-        #     redirect_to @commentable
-        # end
     end
 
     def destroy
