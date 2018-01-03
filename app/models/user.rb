@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
   ratyrate_rater
+  acts_as_voter
 
   has_many :tutorials
   

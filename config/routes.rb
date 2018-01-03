@@ -19,7 +19,11 @@ Rails.application.routes.draw do
   # get '/admin/panel/tutorials', to: 'panel#tutorials'
 
   resources :tutorials do
-    resources :comments
+    resources :comments do
+      member do
+        put "like" => "comments#like"
+      end
+    end
     resources :tutorials
   end
 

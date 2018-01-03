@@ -22,6 +22,10 @@
 //= require_tree .
 //= require trix
 
+function toggleLikeButton(x) {
+    x.classList.toggle("fa-thumbs-down");
+}
+
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {

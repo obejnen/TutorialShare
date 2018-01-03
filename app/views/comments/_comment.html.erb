@@ -10,11 +10,10 @@
                     <%= comment.body %>
                 </p>
             </div>
-            <p>
-                <small>
-                    <a href="">Like</a>
-                </small>
-            </p>
+            <%= link_to like_tutorial_comment_path(comment), method: :put do %>
+                <span onclick="toggleLikeButton(this)" class="fa fa-thumbs-up"></span>
+            <% end %>
+            Count: <%= comment.get_likes.size %>
         </div>
     </div>
 </div>
