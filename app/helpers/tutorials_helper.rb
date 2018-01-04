@@ -6,4 +6,8 @@ module TutorialsHelper
           yield(tag, classes[index.round])
         end
     end
+
+    def to_markdown(text)
+        Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(render_options = {}), extensions = {}).render(text)
+    end
 end
