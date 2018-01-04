@@ -13,3 +13,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( background.css.scss )
 Rails.application.config.assets.precompile += %w( main.sass )
+Rails.application.config.assets.precompile += %w( ckeditor/*)
+

@@ -18,6 +18,7 @@
 //= require search
 //= require turbolinks
 //= require jquery.easy-autocomplete
+//= require ckeditor/init
 //= require_tree .
 //= require trix
 
