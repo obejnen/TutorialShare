@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery-ui
-//= require jquery.turbolinks
-// require turbolinks
+// require jquery.turbolinks
+//= require turbolinks
 //= require rails-ujs
 //= require jquery.raty
 //= require ratyrate
 //= require search
+// require channels
 //= require jquery.easy-autocomplete
 //= require ckeditor/init
 //= require_tree .

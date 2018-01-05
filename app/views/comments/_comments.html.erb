@@ -1,0 +1,5 @@
+<%= render 'comments/new', tutorial: @tutorial %>
+
+<section id="comments" data-tutorial-id="<%= @tutorial.id %>">
+  <%= render @tutorial.comments %>
+</section>

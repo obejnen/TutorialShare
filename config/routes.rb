@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
+  mount ActionCable.server => '/cable'
   
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users

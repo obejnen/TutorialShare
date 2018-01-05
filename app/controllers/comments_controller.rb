@@ -12,7 +12,15 @@ class CommentsController < ApplicationController
     def create
         @comment = @commentable.comments.new(comment_params)
         @comment.save
-        redirect_to @commentable
+        # redirect_to @commentable
+    end
+
+    def index
+        @comments = @commentable.comments
+    end
+
+    def show
+        @comment = Comment.find(params[:id])
     end
 
     def destroy
@@ -45,6 +53,7 @@ class CommentsController < ApplicationController
 
     def find_commentable
         @commentable = Tutorial.find_by_id(params[:tutorial_id])
+        @tutorial = @commentable
         #  if params[:tutorial_id]
     end
 end

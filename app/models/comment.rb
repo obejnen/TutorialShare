@@ -1,4 +1,7 @@
 class Comment < ApplicationRecord
+    
+    after_create_commit { RenderCommentJob.perform_later self }
+
     belongs_to :commentable
     belongs_to :user
     acts_as_votable

@@ -1,0 +1,19 @@
+<div class="comment col-xs-10">
+    <div class="comment-background">
+        <div class="comment-body">
+            <p class="pull-right">
+                <small><%= time_ago_in_words(comment.created_at) %> ago</small>
+            </p>
+            <h4><%= comment.user.username %></h4>
+            <div class="media-body">
+                <p>
+                    <%= comment.body %>
+                </p>
+            </div>
+            <%= link_to like_tutorial_comment_path(comment), method: :put, remote: true do %>
+            <span class="fa fa-btn like-btn-<%= comment.id %> fa-1x fa-thumbs-<%= current_user.liked?(comment) ? "down" : "up" %>"></span>
+            <% end %>
+            Liked: <span class="likes-count-<%= comment.id %>"><%= comment.get_likes.size %></span>
+        </div>
+    </div>
+</div>
