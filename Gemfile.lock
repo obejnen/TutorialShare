@@ -281,6 +281,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-assets-tether (>= 1.1.0)!
+  rails-html-sanitizer
   ransack
   ratyrate
   redcarpet

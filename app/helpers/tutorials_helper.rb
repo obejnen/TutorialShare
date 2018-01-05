@@ -10,4 +10,10 @@ module TutorialsHelper
     def to_markdown(text)
         Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(render_options = {}), extensions = {}).render(text)
     end
+
+    def remove_tags(text)
+    scrubber = Rails::Html::PermitScrubber.new
+    scrubber.tags = ['img']
+    Loofah.fragment(text).scrub!(scrubber).to_s
+    end
 end

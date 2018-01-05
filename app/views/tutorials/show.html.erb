@@ -29,7 +29,7 @@
         </section>
 
         <section class="tutorial-body">
-            <%= to_markdown(ActionView::Base.full_sanitizer.sanitize(@tutorial.body)).html_safe %>
+            <%= to_markdown(remove_tags(@tutorial.body)).html_safe %>
         </section>
 
         <section class="tutorial-comments">
