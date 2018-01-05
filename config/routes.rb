@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :tutorials do
     resources :comments do
       member do
-        put "like" => "comments#like"
+        put "like", to: "comments#like"
       end
     end
     resources :tutorials

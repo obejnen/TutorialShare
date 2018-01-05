@@ -8,6 +8,7 @@ class RenderCommentJob < ApplicationJob
 
   private
     def render_comment(comment)
-      ApplicationController.renderer.render(partial: 'comments/comment', locals: { comment: comment })
+      # ApplicationController.renderer.render(partial: 'comments/comment', locals: { comment: comment })
+      ApplicationController.render_with_signed_in_user(comment.user, partial: 'comments/comment', locals: { comment: comment })      
     end
 end
