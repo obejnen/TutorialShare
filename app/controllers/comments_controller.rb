@@ -24,7 +24,11 @@ class CommentsController < ApplicationController
     end
 
     def destroy
+        @tutorial = @comment.tutorial
         @comment.destroy
+        unless params[:view_name].present?
+            redirect_to tutorial_path(@tutorial)
+        end
     end
 
     def like

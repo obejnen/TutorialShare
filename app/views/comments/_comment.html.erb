@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
 <% cache comment do %>
-<div class="container">
+<div class="container" id="comment-<%= comment.id %>" data-remote="true">
     <div class="row">
         <div class="col-sm-8">
             <div class="panel panel-white post panel-shadow">
@@ -16,20 +16,24 @@
                             <% end %>
                             made a comment.
                         </div>
+                        <% if current_user.admin? or current_user == comment.user %>
+                            <%= link_to t('common.change'), edit_comment_path(comment) %>
+                        <% end %>
+                        <% if current_user.admin? %>
+                            | <%= link_to t('common.delete'), comment_path(comment), method: :delete %>
+                        <% end %>                            
                         <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %> ago</h6>
                     </div>
                 </div> 
-                <div class="post-description"> 
-                    <p><%= comment.body %></p>
+                <div class="post-description">
+                    <div class="comment-body">
+                        <p><%= comment.body %></p>
+                    </div>
                     <div class="stats">
                         <a href="/tutorials/<%= comment.id %>/comments/<%= comment.tutorial.id %>/like" data-method="put" data-remote="true"
                             class="btn btn-default stat-item fa">
                             <i class="fa fa-btn like-btn-<%= comment.id %> fa-1x fa-thumbs-<%= current_user.liked?(comment) ? "down" : "up" %>"></i>
                             <span class="likes-count-<%= comment.id %>"><%= comment.get_likes.size %></span>
-                        </a>
-                        
-                        <a href="#" class="btn btn-default stat-item">
-                            <i class="fa fa-thumbs-down icon"></i>12
                         </a>
                     </div>
                 </div>

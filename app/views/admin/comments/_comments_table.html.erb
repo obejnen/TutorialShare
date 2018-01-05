@@ -21,7 +21,7 @@
                     <td>
                         <%= link_to 'Profile', user_path(comment.user), class: "btn btn-info btn-sm" %>
                         <%= link_to 'Tutorial', tutorial_path(comment.tutorial), class: "btn btn-success btn-sm" %>
-                        <%= link_to 'Delete', comment_path(comment), method: :delete, data: {confirm: "Are you sure?"},
+                        <%= link_to 'Delete', comment_path(comment, view_name: "admin"), method: :delete, data: {confirm: "Are you sure?"},
                             class: "btn btn-danger btn-sm", remote: true %>
                     </td>
                 </tr>

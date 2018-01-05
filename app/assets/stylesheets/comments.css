@@ -93,9 +93,15 @@
   margin-top: 0;
   display: inline;
 }
-.post .post-footer .comments-list .comment .comment-body {
+.post .post-footer .comments-list .comment{
   margin-left: 50px;
 }
 .post .post-footer .comments-list .comment > .comments-list {
   margin-left: 50px;
+}
+
+.comment-body{
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
 }
