@@ -1,3 +1,4 @@
+<div class="sidebar" id="default-sidebar">
 <% unless Category.all.empty? %>
     <div class="submenu">
         <h2 class="title"><%= t('common.category') %></h2>
@@ -13,3 +14,5 @@
         </ul>
     </div>
 <% end %>
+<%= render("shared/tags_cloud") %>
+</div>

@@ -13,16 +13,18 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery.turbolinks
-// require turbolinks
+//= require turbolinks
+//= require bootstrap-tagsinput
 //= require rails-ujs
 //= require jquery.raty
 //= require ratyrate
 //= require search
-// require channels
 //= require jquery.easy-autocomplete
 //= require ckeditor/init
 //= require_tree .
 //= require trix
+
+$.turbo.use('turbolinks:load', 'turbolinks:request-start')
 
 function toggleLikeButton(x) {
     x.classList.toggle("fa-thumbs-down");

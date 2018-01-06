@@ -1,8 +1,6 @@
 class Admin::PanelController < ApplicationController
     before_action :authenticate_user!
 
-    layout "admin_layout"
-
     def index
     end
 

@@ -1,8 +1,5 @@
 class Admin::AdminController < ApplicationController
     before_action :check_for_admin
-
-    layout "admin_layout"
-
     protected
 
     def check_for_admin

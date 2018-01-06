@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   add_flash_types :success, :danger, :warning, :info
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_sidebar
 
   def self.render_with_signed_in_user(user, *args)
     ActionController::Renderer::RACK_KEY_TRANSLATION['warden'] ||= 'warden'
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
+  end
+
+  def set_sidebar
+    @sidebar = params[:view_name].present? ? "admin" : "default"
   end
 end
