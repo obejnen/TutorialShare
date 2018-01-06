@@ -7,6 +7,9 @@
   <div class="title">
     <%= link_to tutorial.title.capitalize, tutorial_path(tutorial) %>
   </div>
+  <div class="tags">
+    <%= raw tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
+  </div>
   <div class="category">
     <%= link_to tutorial.category.name, category_path(tutorial.category) %>
   </div>
