@@ -1,4 +1,6 @@
-<%= render 'comments/new', tutorial: @tutorial %>
+<% if user_signed_in? %>
+  <%= render 'comments/new', tutorial: @tutorial %>
+<% end %>
 
 <section id="comments" data-tutorial-id="<%= @tutorial.id %>">
   <%= render @tutorial.comments %>

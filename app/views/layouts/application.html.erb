@@ -1,93 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Tutor</title>
-  <%= csrf_meta_tags %>
-  <%= action_cable_meta_tag %>
+    <title>Tutor</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <style>
-            
-            </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body data-target=".navbar">
+<body>
+    <button id="onTopBtn" class="on-top" onclick="topFunction()">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+    </button>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/">TUTORIALHEAP</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-left">
-              <li><a href="/">HOME</a></li>
-              <li><a href="/tutorials/new">CREATE</a></li>
-              <%= form_with url: search_path, local: true, method: :get, html: { class: "navbar-form navbar-left navbar-form-inline" } do |f| %>
-              <%= f.text_field :q, placeholder: "Search", data: { behavior: 'autocomplete' }, class: "form-control form-control-inline" %>
-              <% end %>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <% if user_signed_in? %>
-                <li>
-                </li>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.username %>
-                  <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Profile", user_path(current_user) %></li>
-                    <li><%= link_to "Admin panel", admin_panel_path if current_user.admin? %></li>
-                    <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>              
-                  </ul>
-                </li>
-                <% else %>
-                  <li><%= link_to "SIGN UP", new_user_registration_path %></li>
-                  <li><%= link_to "SIGN IN", new_user_session_path %></li>
-                <% end %>
-            </ul>            
-          </div>
+            <div class="navbar-header">
+                <%= link_to "Tutorochka", root_path, class: "navbar-brand" %>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="<%= 'active' if current_page?(root_path) %>"><%= link_to t('navbar.home'), root_path %></li>
+                    <li class="<%= 'active' if current_page?(tutorials_path) %>"><%= link_to t('navbar.tutorials'), tutorials_path %></li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <%= form_with url: search_path, local: true, method: :get, html: { class: "navbar-form navbar-left navbar-form-inline" } do |f| %>
+                        <%= f.text_field :q, placeholder: t('navbar.search'), data: { behavior: 'autocomplete' }, class: "form-control form-control-inline" %>
+                    <% end %>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <% if user_signed_in? %>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
+                                <li><%= link_to t('navbar.admin_panel'), admin_panel_path if current_user.admin? %></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Settings</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><%= link_to t('navbar.sign.out'), destroy_user_session_path, method: :delete %></li>
+                            </ul>
+                        </li>
+                    <% else %>
+                        <li><%= link_to t('navbar.sign.in'), new_user_session_path %></li>
+                        <li><%= link_to t('navbar.sign.up'), new_user_registration_path %></li>
+                    <% end %>
+                </ul>     
+            </div>
         </div>
-      </nav>
-  <div class="main-container bg-white">
-    <div class="row">
-      <div class="col-md-12">
-        <% flash.each do |name, message| %>
-          <div class="alert <%= bootstrap_class_for(name) %>">
-            <button class="close" data-dismiss="alert">&times;</button>
-            <%= message %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    </nav>
 
-    <div class="row main">
-      <div class="col-md-3 bg-white">
-        <%= render 'shared/submenu' %>
-      </div>
-      <div class="col-md-7 bg-white">
+    <div class="sidebar">
+        <%= render "shared/submenu" %>
+        <div class="tags-cloud">
+            <h2>Tags</h2>
+            <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+                <%= link_to "<span class='label label-primary transparent'>#{tag.name}</span>".html_safe,
+                    tag_path(tag.name), class: css_class %>
+            <% end %>
+        </div>
+    </div>
+    <div class="main">
         <%= yield %>
-      </div>
-      <div class="col-md-2 bg-white">
-        <div class="tag_cloud">
-          <h2>Tags</h2>
-          <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
-            <%= link_to "<span class='label label-primary transparent'>#{tag.name}</span>".html_safe,
-             tag_path(tag.name), class: css_class %>
-          <% end %>
-        </div>
-      </div>
     </div>
-  </div>
-
-  <button id="onTopBtn" class="on-top" onclick="topFunction()"><span class="glyphicon glyphicon-arrow-up"></span></button>
-
-  <script>
-      // When the user scrolls down 20px from the top of the document, show the button
-      
-      </script>
 </body>
+
 </html>

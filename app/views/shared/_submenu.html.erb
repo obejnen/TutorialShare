@@ -1,15 +1,15 @@
 <% unless Category.all.empty? %>
-<div class="submenu">
-    <h2 class="title">Category</h2>
-    <ul class="nav nav-pills nav-stacked">
-        <li class="nav-item li-item-moved <%= "active" if current_page?("/tutorials") %>">
-            <%= link_to "All", "/tutorials", class: "nav-link"%>
-        </li>
-        <% Category.all.each do |category| %>
-            <li class="nav-item li-item-moved <%= "active" if current_page?(category_path(category)) %>">
-                <%= link_to category.name, category, class: "nav-link" %>
+    <div class="submenu">
+        <h2 class="title"><%= t('common.category') %></h2>
+        <ul class="nav nav-pills nav-stacked">
+            <li class="nav-item li-item-moved <%= "active" if current_page?(tutorials_path) %>">
+                <%= link_to "All", "/tutorials", class: "nav-link"%>
             </li>
-        <% end %>
-    </ul>
-</div>
+            <% Category.all.each do |category| %>
+                <li class="nav-item li-item-moved <%= "active" if current_page?(category_path(category)) %>">
+                    <%= link_to category.name, category, class: "nav-link" %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 <% end %>

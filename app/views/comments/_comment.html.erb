@@ -7,21 +7,20 @@
             <div class="panel panel-white post panel-shadow">
                 <div class="post-heading">
                     <div class="pull-left image">
+                        <%= link_to user_path(comment.user) do %>
                         <img src="http://bootdey.com/img/Content/user_1.jpg" class="img-circle avatar" alt="user profile image">
+                        <% end %>
                     </div>
                     <div class="pull-left meta">
                         <div class="title h5">
-                            <%= link_to user_path(comment.user) do %>
+                            <%= link_to user_path(comment.user), class: "user-profile-link" do %>
                                 <b><%= comment.user.username %></b>
                             <% end %>
                             made a comment.
+                            <% if user_signed_in? and current_user.admin? %>
+                                <%= link_to t('common.delete'), comment_path(comment), method: :delete %>
+                            <% end %>                            
                         </div>
-                        <% if current_user.admin? or current_user == comment.user %>
-                            <%= link_to t('common.change'), edit_comment_path(comment) %>
-                        <% end %>
-                        <% if current_user.admin? %>
-                            | <%= link_to t('common.delete'), comment_path(comment), method: :delete %>
-                        <% end %>                            
                         <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %> ago</h6>
                     </div>
                 </div> 
@@ -30,11 +29,18 @@
                         <p><%= comment.body %></p>
                     </div>
                     <div class="stats">
-                        <a href="/tutorials/<%= comment.id %>/comments/<%= comment.tutorial.id %>/like" data-method="put" data-remote="true"
-                            class="btn btn-default stat-item fa">
-                            <i class="fa fa-btn like-btn-<%= comment.id %> fa-1x fa-thumbs-<%= current_user.liked?(comment) ? "down" : "up" %>"></i>
-                            <span class="likes-count-<%= comment.id %>"><%= comment.get_likes.size %></span>
-                        </a>
+                        <% if user_signed_in? %>
+                            <a href="/tutorials/<%= comment.id %>/comments/<%= comment.tutorial.id %>/like" data-method="put" data-remote="true"
+                                class="btn btn-default stat-item fa">
+                                <i class="fa 
+                                    fa-btn like-btn-<%= comment.id %> fa-1x fa-thumbs-<%= current_user.liked?(comment) ? "down" : "up" %>"></i>
+                                <span class="likes-count-<%= comment.id %>"><%= comment.get_likes.size %></span>
+                            </a>
+                        <% else %>
+                            <div class="btn btn-default stat-item">
+                                <i class="fa fa-thumbs-up icon"></i><%= comment.get_likes.size %>
+                            </div>
+                        <% end %>
                     </div>
                 </div>
             </div>

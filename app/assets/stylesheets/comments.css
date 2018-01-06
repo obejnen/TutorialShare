@@ -25,10 +25,10 @@
 .post .post-heading .meta .title {
   margin-bottom: 0;
 }
-.post .post-heading .meta .title a {
+.post .post-heading .meta .title a.user-profile-link {
   color: black;
 }
-.post .post-heading .meta .title a:hover {
+.post .post-heading .meta .title a.user-profile-link:hover {
   color: #aaaaaa;
 }
 .post .post-heading .meta .time {

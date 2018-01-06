@@ -1,4 +1,15 @@
 en:
+  navbar:
+    tutorials: 'Tutorials'
+    home: 'Home'
+    search: 'Search'
+    sign:
+      in: 'Sign in'
+      out: 'Sign out'
+      up: 'Sign up'
+    profile: 'Profile'
+    admin_panel: "Admin panel"
+
   tutorials:
     new:
       title: 'New tutorial'
@@ -12,3 +23,4 @@ en:
     back: 'Back'
     change: 'Edit'
     delete: 'Delete'
+    category: 'Category'

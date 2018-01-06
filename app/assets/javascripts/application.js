@@ -31,7 +31,7 @@ function toggleLikeButton(x) {
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         document.getElementById("onTopBtn").style.display = "block";
     } else {
         document.getElementById("onTopBtn").style.display = "none";

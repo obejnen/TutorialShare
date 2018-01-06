@@ -5,7 +5,7 @@ class TutorialsController < ApplicationController
     before_action :force_json, only: [:search]
 
     def index
-        @tutorials = Tutorial.paginate(page: params[:page], per_page: 5)
+        @tutorials = Tutorial.paginate(page: params[:page], per_page: 5).order(updated_at: :desc)
     end
 
     def show
