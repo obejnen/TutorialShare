@@ -1,7 +1,7 @@
 class TutorialsController < ApplicationController
 
     before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
-    before_action :authenticate_user!, except: [:show, :index]
+    before_action :authenticate_user!, except: [:search, :autocomplete, :show, :index]
     before_action :force_json, only: [:search]
 
     def index

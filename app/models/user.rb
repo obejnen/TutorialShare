@@ -8,6 +8,8 @@ class User < ApplicationRecord
   
   has_many :comments
 
+  validates :username, presence: true
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :authentication_keys => {email: true, login: false}

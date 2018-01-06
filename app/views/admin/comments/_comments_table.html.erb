@@ -1,9 +1,9 @@
 <table class="table" id="commentsTable">
     <tr>
-        <th><%= sort_link @search, :body, "Comment" %></th>
-        <th><%= sort_link @search, :user_username, "User" %></th>
-        <th><%= sort_link @search, :tutorial_title, "Tutorial" %></th>
-        <th>Actions</th>
+        <th><%= sort_link @search, :body, t('activerecord.models.comment') %></th>
+        <th><%= sort_link @search, :user_username, t('activerecord.models.user') %></th>
+        <th><%= sort_link @search, :tutorial_title, t('activerecord.models.tutorial') %></th>
+        <th><%= t('common.actions') %></th>
     </tr>
     <% @comments.each do |comment| %>
     <tr id="comment-<%= comment.id %>">

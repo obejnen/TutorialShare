@@ -1,4 +1,14 @@
 ru:
+  navbar:
+    tutorials: 'Туториалы'
+    home: 'Домашняя'
+    search: 'Поиск'
+    profile: 'Профиль'
+    admin_panel: "Управление"
+    settings: 'Настройки'
+  registrations:
+    new:
+      title: 'Регистрация'
   categories:
     new:
       title: 'Новая категория'
@@ -20,3 +30,43 @@ ru:
     back: 'Назад'
     change: 'Изменить'
     delete: 'Удалить'
+    categories: 'Категории'
+    comments: 'Комментарии'
+    tutorials: 'Туториалы'
+    users: 'Пользователи'
+    actions: 'Действия'
+    tags: 'Теги'
+    created_by: 'Создан'
+    all: "Все"
+    sign:
+      in: 'Войти'
+      out: 'Выйти'
+      up: 'Зарегистрироваться'
+  activerecord:
+    models:
+      category: 'Категория'
+      tutorial: 'Туториал'
+      tag: 'Тег'
+      comment: 'Комментарий'
+      user: "Пользователь"
+    attributes:
+      category:
+        name: 'Название'
+      user:
+        username: "Имя пользователя"
+        email: "Email адрес"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        remember_me: "Запомнить меня"
+        role: 'Роль'
+        status: 'Статус'
+      tutorial:
+        title: 'Название'
+        description: 'Краткое описание'
+        body: 'Содержание'
+        image: 'Превью'
+        category_id: 'Категория'
+        all_tags: 'Теги'
+    errors:
+      messages:
+        blank: 'не может быть пустым'

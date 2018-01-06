@@ -1,7 +1,7 @@
 <table class="table" id="categoriesTable">
     <tr>
-        <th><%= sort_link @search, :name, "Category" %></th>
-        <th>Actions</th>
+        <th><%= sort_link @search, :name, t('common.category') %></th>
+        <th><%= t('common.actions') %></th>
     </tr>
     <% @categories.each do |category| %>
     <tr>

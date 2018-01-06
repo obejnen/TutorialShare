@@ -1,35 +1,30 @@
 <table class="table" id="usersTable">
-        <thead>
-            <tr>
-                <th><a onclick="sortTable(0, 'usersTable')">Username</a></th>
-                <th><a onclick="sortTable(1, 'usersTable')">Email</a></th>
-                <th><a onclick="sortTable(2, 'usersTable')">Role</a></th>
-                <th><a onclick="sortTable(3, 'usersTable')">Status</a></th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @users.each do |user| %>
-                <tr>
-                    <td>
-                        <%= user.username %>
-                    </td>
-                    <td>
-                        <%= user.email %>
-                    </td>
-                    <td>
-                        <%= role(user) %>
-                    </td>
-                    <td>
-                        <%= status(user) %>
-                    </td>
-                    <td>
-                        <%= link_to 'Profile', user_path(user), class: "btn btn-info btn-sm" %>
-                        <%= link_to 'Edit', edit_user_registration_path(user), class: "btn btn-primary btn-sm" %>
-                        <%= link_to 'Change Role', "/admin/users/#{user.id}/chrole", class: "btn btn-warning btn-sm" %>
-                        <%= link_to ban_btn_text(user), "/admin/users/#{user.id}/ban", class: "btn btn-danger btn-sm" %>
-                    </td>
-                </tr>
-                <% end %>
-        </tbody>
-    </table>
+    <tr>
+        <th><%= sort_link @search, :username, t('activerecord.attributes.user.username') %></th>
+        <th><%= sort_link @search, :email, t('activerecord.attributes.user.email') %></th>
+        <th><%= t('activerecord.attributes.user.role') %></th>
+        <th><%= t('activerecord.attributes.user.status') %></th>
+        <th><%= t('common.actions') %></th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+        <td>
+            <%= link_to user.username, user_path(user) %>
+        </td>
+        <td>
+            <%= user.email %>
+        </td>
+        <td>
+            <%= role(user) %>
+        </td>
+        <td>
+            <%= status(user) %>
+        </td>
+        <td>
+            <%= link_to 'Edit', edit_user_registration_path(user), class: "btn btn-primary btn-sm" %>
+            <%= link_to 'Change Role', "/admin/users/#{user.id}/chrole", class: "btn btn-warning btn-sm" %>
+            <%= link_to ban_btn_text(user), "/admin/users/#{user.id}/ban", class: "btn btn-danger btn-sm" %>
+        </td>
+    </tr>
+    <% end %>
+</table>

@@ -40,14 +40,14 @@
                                 <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
                                 <li><%= link_to t('navbar.admin_panel'), admin_panel_path(view_name: "admin") if current_user.admin? %></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Settings</a></li>
+                                <li><a href="#"><%= t('navbar.settings') %></a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><%= link_to t('navbar.sign.out'), destroy_user_session_path, method: :delete %></li>
+                                <li><%= link_to t('common.sign.out'), destroy_user_session_path, method: :delete %></li>
                             </ul>
                         </li>
                     <% else %>
-                        <li><%= link_to t('navbar.sign.in'), new_user_session_path %></li>
-                        <li><%= link_to t('navbar.sign.up'), new_user_registration_path %></li>
+                        <li><%= link_to t('common.sign.in'), new_user_session_path %></li>
+                        <li><%= link_to t('common.sign.up'), new_user_registration_path %></li>
                     <% end %>
                 </ul>     
             </div>

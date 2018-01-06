@@ -1,10 +1,10 @@
 <div class="sidebar" id="default-sidebar">
 <% unless Category.all.empty? %>
     <div class="submenu">
-        <h2 class="title"><%= t('common.category') %></h2>
+        <h2 class="title"><%= t('activerecord.mode.category') %></h2>
         <ul class="nav nav-pills nav-stacked">
             <li class="nav-item li-item-moved <%= "active" if current_page?(tutorials_path) %>">
-                <%= link_to "All", "/tutorials", class: "nav-link"%>
+                <%= link_to t('common.all'), "/tutorials", class: "nav-link"%>
             </li>
             <% Category.all.each do |category| %>
                 <li class="nav-item li-item-moved <%= "active" if current_page?(category_path(category)) %>">

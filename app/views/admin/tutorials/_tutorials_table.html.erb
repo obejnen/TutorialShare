@@ -1,10 +1,10 @@
 <table class="table" id="tutorialsTable">
     <tr>
         <!-- <th><a onclick="sortTable(0, 'tutorialsTable')">Title</a></th> -->
-        <th><%= sort_link @search, :title, "Title" %></th>
-        <th><%= sort_link @search, :category_name, "Category" %></th>
-        <th><%= sort_link @search, :user_username, "User" %></th>
-        <th>Actions</th>
+        <th><%= sort_link @search, :title, t('activerecord.attributes.tutorial.title') %></th>
+        <th><%= sort_link @search, :category_name, t('activerecord.models.category') %></th>
+        <th><%= sort_link @search, :user_username, t('activerecord.attributes.user.username') %></th>
+        <th><%= t('common.actions') %></th>
     </tr>
     <% @tutorials.each do |tutorial| %>
     <tr>

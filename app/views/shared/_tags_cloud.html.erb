@@ -1,5 +1,5 @@
 <div class="tags-cloud">
-    <h2>Tags</h2>
+    <h2><%= t('common.tags') %></h2>
     <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
         <%= link_to "<span class='label label-primary transparent'>#{tag.name}</span>".html_safe,
             tag_path(tag.name), class: css_class %>
