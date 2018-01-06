@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery.turbolinks
-//= require turbolinks
 //= require bootstrap-tagsinput
 //= require rails-ujs
 //= require jquery.raty
@@ -22,6 +21,8 @@
 //= require jquery.easy-autocomplete
 //= require ckeditor/init
 //= require_tree .
+// require turbolinks
+// require compatibility
 //= require trix
 
 $.turbo.use('turbolinks:load', 'turbolinks:request-start')

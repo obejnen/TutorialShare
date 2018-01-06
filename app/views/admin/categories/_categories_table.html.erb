@@ -1,21 +1,17 @@
 <table class="table" id="categoriesTable">
-    <thead>
-        <tr>
-            <th><a onclick="sortTable(0, 'categoriesTable')">Name</a></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @categories.each_with_index do |category, index| %>
-            <tr>
-                <td>
-                    <%= category.name %>
-                </td>
-                <td>
-                    <%= link_to 'Edit', edit_admin_category_path(category), class: "btn btn-primary btn-sm" %>
-                        <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
-                </td>
-            </tr>
-            <% end %>
-    </tbody>
+    <tr>
+        <th><%= sort_link @search, :name, "Category" %></th>
+        <th>Actions</th>
+    </tr>
+    <% @categories.each do |category| %>
+    <tr>
+        <td>
+            <%= link_to category.name, category_path(category) %>
+        </td>
+        <td>
+            <%= link_to 'Edit', edit_admin_category_path(category), class: "btn btn-primary btn-sm" %>
+            <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+        </td>
+    </tr>
+    <% end %>
 </table>

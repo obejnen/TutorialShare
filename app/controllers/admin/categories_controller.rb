@@ -2,7 +2,8 @@ class Admin::CategoriesController < Admin::AdminController
     before_action :set_category, only: [:edit, :destroy, :update]
 
     def index
-        @categories = Category.all
+        @search = Category.ransack(params[:q])
+        @categories = @search.result
     end
 
     def new

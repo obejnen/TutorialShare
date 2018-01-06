@@ -1,5 +1,6 @@
 class Admin::TutorialsController < Admin::AdminController
     def index
-        @tutorials = Tutorial.all
+        @search = Tutorial.search(params[:q])
+        @tutorials = @search.result
     end
 end

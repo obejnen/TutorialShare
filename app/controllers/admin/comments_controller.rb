@@ -1,5 +1,6 @@
 class Admin::CommentsController < Admin::AdminController
     def index
-        @comments = Comment.all
+        @search = Comment.ransack(params[:q])
+        @comments = @search.result
     end
 end

@@ -1,31 +1,20 @@
 <table class="table" id="tutorialsTable">
-    <thead>
-        <tr>
-            <th><a onclick="sortTable(0, 'tutorialsTable')">Title</a></th>
-            <th><a onclick="sortTable(1, 'tutorialsTable')">Category</a></th>
-            <th><a onclick="sortTable(1, 'tutorialsTable')">Author</a></th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @tutorials.each do |tutorial| %>
-            <tr>
-                <td>
-                    <%= tutorial.title %>
-                </td>
-                <td>
-                    <%= tutorial.category.name %>
-                </td>
-                <td>
-                    <%= tutorial.user.username %>
-                </td>
-                <td>
-                    <%= link_to 'Profile', user_path(tutorial.user), class: "btn btn-info btn-sm" %>
-                    <%= link_to 'Tutorial', tutorial_path(tutorial), class: "btn btn-success btn-sm" %>
-                    <%= link_to 'Edit', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm" %>
-                    <%= link_to 'Delete', tutorial_path(tutorial), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
-                </td>
-            </tr>
-        <% end %>
-    </tbody>
+    <tr>
+        <!-- <th><a onclick="sortTable(0, 'tutorialsTable')">Title</a></th> -->
+        <th><%= sort_link @search, :title, "Title" %></th>
+        <th><%= sort_link @search, :category_name, "Category" %></th>
+        <th><%= sort_link @search, :user_username, "User" %></th>
+        <th>Actions</th>
+    </tr>
+    <% @tutorials.each do |tutorial| %>
+    <tr>
+        <td><%= link_to tutorial.title, tutorial_path(tutorial) %></td>
+        <td><%= link_to tutorial.category.name, category_path(tutorial.category) %></td>
+        <td><%= link_to tutorial.user.username, user_path(tutorial.user) %></td>
+        <td>
+            <%= link_to 'Edit', edit_tutorial_path(tutorial), class: "btn btn-primary btn-sm" %>
+            <%= link_to 'Delete', tutorial_path(tutorial), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
+        </td>
+    </tr>
+    <% end %>
 </table>

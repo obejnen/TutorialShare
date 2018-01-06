@@ -2,7 +2,8 @@ class Admin::UsersController < Admin::AdminController
     before_action :set_user, only: [:ban, :change_role]
 
     def index
-        @users = User.all
+        @search = User.ransack(params[:q])
+        @users = @search.result
     end
 
     def ban

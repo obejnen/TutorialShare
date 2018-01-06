@@ -1,30 +1,25 @@
 <table class="table" id="commentsTable">
-        <thead>
-            <tr>
-                <th><a onclick="sortTable(0, 'commentsTable')">Body</a></th>
-                <th><a onclick="sortTable(1, 'commentsTable')">Author</a></th>
-                <th><a onclick="sortTable(2, 'commentsTable')">Tutorial</a></th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @comments.each do |comment| %>
-                <tr id="comment-<%= comment.id %>">
-                    <td>
-                        <%= comment.body[0..15]%>
-                    </td>
-                    <td>
-                        <%= comment.user.username %>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                        <%= link_to 'Profile', user_path(comment.user), class: "btn btn-info btn-sm" %>
-                        <%= link_to 'Tutorial', tutorial_path(comment.tutorial), class: "btn btn-success btn-sm" %>
-                        <%= link_to 'Delete', comment_path(comment, view_name: "admin"), method: :delete, data: {confirm: "Are you sure?"},
-                            class: "btn btn-danger btn-sm", remote: true %>
-                    </td>
-                </tr>
-                <% end %>
-        </tbody>
-    </table>
+    <tr>
+        <th><%= sort_link @search, :body, "Comment" %></th>
+        <th><%= sort_link @search, :user_username, "User" %></th>
+        <th><%= sort_link @search, :tutorial_title, "Tutorial" %></th>
+        <th>Actions</th>
+    </tr>
+    <% @comments.each do |comment| %>
+    <tr id="comment-<%= comment.id %>">
+        <td>
+            <%= link_to comment.body[0..15], tutorial_path(comment.tutorial) %>
+        </td>
+        <td>
+            <%= link_to comment.user.username, user_path(comment.user) %>
+        </td>
+        <td>
+            <%= link_to comment.tutorial.title, tutorial_path(comment.tutorial) %>
+        </td>
+        <td>
+            <%= link_to 'Delete', comment_path(comment, view_name: "admin"), method: :delete,
+                class: "btn btn-danger btn-sm", remote: true %>
+        </td>
+    </tr>
+    <% end %>
+</table>
