@@ -1,15 +1,13 @@
 
 .panel-white {
-  border: 1px solid #dddddd;
+  border: 2px solid #a7a7a7;
 }
 .panel-white  .panel-heading {
   color: #333;
-  background-color: #fff;
-  border-color: #ddd;
+  border-color: #a7a7a7;
 }
 .panel-white  .panel-footer {
-  background-color: #fff;
-  border-color: #ddd;
+  border-color: #a7a7a7;
 }
 
 .post .post-heading {
@@ -25,9 +23,7 @@
 .post .post-heading .meta .title {
   margin-bottom: 0;
 }
-.post .post-heading .meta .title a.user-profile-link {
-  color: black;
-}
+
 .post .post-heading .meta .title a.user-profile-link:hover {
   color: #aaaaaa;
 }
