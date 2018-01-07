@@ -6,6 +6,7 @@ ru:
     profile: 'Профиль'
     admin_panel: "Управление"
     settings: 'Настройки'
+    new_tutorial: 'Новый туториал'
   registrations:
     new:
       title: 'Регистрация'

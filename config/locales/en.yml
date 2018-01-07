@@ -6,6 +6,7 @@ en:
     profile: 'Profile'
     admin_panel: "Management"
     settings: 'Settings'
+    new_tutorial: 'New tutorial'
   registrations:
     new:
       title: 'Registration'
