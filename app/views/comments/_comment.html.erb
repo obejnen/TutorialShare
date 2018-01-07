@@ -16,12 +16,12 @@
                             <%= link_to user_path(comment.user), class: "user-profile-link" do %>
                                 <b><%= comment.user.username %></b>
                             <% end %>
-                            made a comment.
+                            <%= t('comments.create_by') %>
                             <% if user_signed_in? and current_user.admin? %>
                                 <%= link_to t('common.delete'), comment_path(comment), method: :delete %>
                             <% end %>                            
                         </div>
-                        <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %> ago</h6>
+                        <h6 class="text-muted time"><%= time_ago_in_words(comment.created_at) %> <%= t('date.ago') %></h6>
                     </div>
                 </div> 
                 <div class="post-description">

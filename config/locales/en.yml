@@ -3,24 +3,76 @@ en:
     tutorials: 'Tutorials'
     home: 'Home'
     search: 'Search'
-    sign:
-      in: 'Sign in'
-      out: 'Sign out'
-      up: 'Sign up'
     profile: 'Profile'
-    admin_panel: "Admin panel"
-
+    admin_panel: "Management"
+    settings: 'Settings'
+  registrations:
+    new:
+      title: 'Registration'
+  tags:
+    no_tutorials: 'No tutorials with this tag'
+  comments:
+    create_by: 'posted comment'
+    new:
+      submit: 'Create'
+  categories:
+    new:
+      title: 'New category'
+    edit:
+      title: 'Category editing'
+    form:
+      submit:
+        '%{action} category'
   tutorials:
     new:
       title: 'New tutorial'
     edit:
-      title: 'Tutorial edit'
+      title: 'Tutorial editing'
     form:
       submit:
         '%{action} tutorial'
   common:
-    errors: 'Something went wrongs'
+    errors: 'Form has been filled incorrectly'
     back: 'Back'
     change: 'Edit'
     delete: 'Delete'
-    category: 'Category'
+    categories: 'Categories'
+    comments: 'Comments'
+    tutorials: 'Tutorials'
+    users: 'Users'
+    actions: 'Actions'
+    tags: 'Tags'
+    created_by: 'Created by'
+    all: 'All'
+    sign:
+      in: 'Sign in'
+      out: 'Sign out'
+      up: 'Sign up'
+  activerecord:
+    models:
+      category: 'Category'
+      tutorial: 'Tutorial'
+      tag: 'Tag'
+      comment: 'Comment'
+      user: "User"
+    attributes:
+      category:
+        name: 'Name'
+      user:
+        username: "Username"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        remember_me: "Remeber me"
+        role: 'Role'
+        status: 'Status'
+      tutorial:
+        title: 'Title'
+        description: 'Description'
+        body: 'Body'
+        image: 'Preview'
+        category_id: 'Category'
+        all_tags: 'Tags'
+    errors:
+      messages:
+        blank: "can't be blank"

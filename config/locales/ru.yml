@@ -9,6 +9,12 @@ ru:
   registrations:
     new:
       title: 'Регистрация'
+  tags:
+    no_tutorials: 'Туториалы с данным тегом отсутствуют'
+  comments:
+    create_by: 'написал комментарий'
+    new:
+      submit: 'Создать'
   categories:
     new:
       title: 'Новая категория'

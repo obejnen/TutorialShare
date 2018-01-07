@@ -4,9 +4,6 @@
         <div class="tutorial-title">
             <%= @tutorial.title %>            
         </div>
-        <!-- <div class="tags"> -->
-            <%#= raw @tutorial.tags.map(&:name).map { |t| link_to "<span class='label label-primary transparent'>#{t}</span>".html_safe, tag_path(t) }.join(' ') %>
-        <!-- </div> -->
         <div class="tutorial-info">
             <%= t('common.created_by') %> <%= link_to @tutorial.user.username, user_path(@tutorial.user) %> 
                 <%= @tutorial.created_at.to_date.strftime('%d.%m.%Y') %>
@@ -30,7 +27,7 @@
         </div>
 
             <section class="tutorial-comments">
-                    <h3>Comments</h3>
+                    <h3><%= t('common.comments') %></h3>
                 <%= render("comments/comments") %>
         </section>
 </article>

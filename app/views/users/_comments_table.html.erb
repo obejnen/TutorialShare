@@ -1,25 +1,16 @@
-<table class="table" id="commentsTable">
-        <thead>
-            <tr>
-                <th><a onclick="sortTable(0, 'commentsTable')">Body</a></th>
-                <th><a onclick="sortTable(1, 'commentsTable')">Tutorial</a></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @comments.each do |comment| %>
-                <tr>
-                    <td>
-                        <%= comment.body[0..15] %>
-                    </td>
-                    <td>
-                        <%= comment.tutorial.title %>
-                    </td>
-                    <td>
-                        <%= link_to 'Tutorial', tutorial_path(comment.tutorial), class: "btn btn-success btn-sm" %>
-                        <%= link_to 'Delete', comment_path(comment), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-sm" %>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<table class="table">
+    <tr>
+        <th><%= sort_link @search, :body, t('activerecord.models.comment') %></th>
+        <th><%= sort_link @search, :tutorial_title, t('activerecord.models.tutorial') %></th>
+    </tr>
+    <% @comments.each do |comment| %>
+    <tr>
+        <td>
+            <%= comment.body[0..15] %>
+        </td>
+        <td>
+            <%= link_to comment.tutorial.title, tutorial_path(comment.tutorial) %>
+        </td>
+    </tr>
+    <% end %>
+</table>

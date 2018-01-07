@@ -7,9 +7,13 @@ class UsersController < ApplicationController
     end
 
     def tutorials
+        @search = @user.tutorials.ransack(params[:q])
+        @tutorials = @search.result
     end
 
     def comments
+        @search = @user.comments.ransack(params[:q])        
+        @comments = @search.result
     end
 
     private
@@ -20,7 +24,5 @@ class UsersController < ApplicationController
 
     def set_user_contents
         @user = User.find(params[:user_id])
-        @tutorials = @user.tutorials
-        @comments = @user.comments
     end
 end

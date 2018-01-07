@@ -2,9 +2,9 @@
     <article>
         <%= render "profile_header" %>
         <section class="tutorial-body">
-            e-mail: <%= @user.email %><br>
-            tutorials: <%= @user.tutorials.length %><br>
-            comment: <%= @user.comments.length %>
+            <%= t('activerecord.models.email') %>: <%= @user.email %><br>
+            <%= t('common.tutorials') %>: <%= @user.tutorials.length %><br>
+            <%= t('common.comments') %>: <%= @user.comments.length %>
         </section>
     </article>
 </div>

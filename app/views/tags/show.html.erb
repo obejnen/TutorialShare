@@ -1,7 +1,7 @@
 <h1><%= @tag.name %></h1>
 
 <% if @tag.tutorials.empty? %>
-    <h2>No tutors</h2>
+    <h2><%= t('tags.no_tutorials') %></h2>
 <% else %>
     <%= render @tag.tutorials %>
 <% end %>
