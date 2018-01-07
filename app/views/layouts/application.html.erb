@@ -13,11 +13,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body class="base-light">
+<body class="base-<%= @color %>">
     <button id="onTopBtn" class="on-top" onclick="topFunction()">
         <span class="glyphicon glyphicon-arrow-up"></span>
     </button>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-<%= @bootstrap_template %> navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <%= link_to "Tutorochka", root_path, class: "navbar-brand" %>
@@ -40,7 +40,27 @@
                                 <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
                                 <li><%= link_to t('navbar.admin_panel'), admin_panel_path(view_name: "admin") if current_user.admin? %></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#"><%= t('navbar.settings') %></a></li>
+                                <li><div class="flags">
+                                <%= link_to set_locale_path(locale: 'ru'), method: :put do %>
+                                    <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/ru.svg" alt="Russia Flag">
+                                <% end %>
+                                <%= link_to set_locale_path(locale: 'en'), method: :put do %>
+                                    <img class="flag" src="https://lipis.github.io/flag-icon-css/flags/4x3/us.svg" alt="Russia Flag">
+                                <% end %>
+                                </div>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li>
+                                    <div class="flags" style="color:black">
+                                        <%= t('common.site-color') %>
+                                        <%= link_to set_theme_path(theme: 'dark'), method: :put do %>
+                                            <img class="base-color" src="http://www.clker.com/cliparts/9/k/b/s/z/c/button-black-hi.png" alt="Russia Flag">
+                                        <% end %>
+                                        <%= link_to set_theme_path(theme: 'light'), method: :put do %>
+                                            <img class="base-color" src="https://upload.wikimedia.org/wikipedia/commons/0/00/WX_circle_white.png" alt="Russia Flag">
+                                        <% end %>
+                                    </div>
+                                </li>
                                 <li role="separator" class="divider"></li>
                                 <li><%= link_to t('common.sign.out'), destroy_user_session_path, method: :delete %></li>
                             </ul>

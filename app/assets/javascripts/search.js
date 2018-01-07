@@ -17,7 +17,8 @@ $(document).ready(function() {
           $input.val("")
           Turbolinks.visit(url)
         }
-      }
+      },
+      theme: "dark"
     }
 
     $input.easyAutocomplete(options)

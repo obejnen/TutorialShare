@@ -16,6 +16,16 @@ class UsersController < ApplicationController
         @comments = @search.result
     end
 
+    def set_locale
+        current_user.set_locale(params[:locale])
+        redirect_back fallback_location: root_path
+    end
+
+    def set_theme
+        current_user.set_theme(params[:theme])
+        redirect_back fallback_location: root_path
+    end
+
     private
 
     def set_user_show
@@ -25,4 +35,5 @@ class UsersController < ApplicationController
     def set_user_contents
         @user = User.find(params[:user_id])
     end
+
 end

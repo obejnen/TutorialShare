@@ -22,7 +22,7 @@
 
         <div class="tutorial-center">
             <section class="tutorial-body">
-                <%= to_markdown(remove_tags(@tutorial.body)).html_safe %>
+                <%= format_page(@tutorial.body).html_safe %>
             </section>
         </div>
 

@@ -42,6 +42,7 @@ ru:
     users: 'Пользователи'
     actions: 'Действия'
     tags: 'Теги'
+    site-color: 'Тема'
     created_by: 'Создан'
     all: "Все"
     sign:

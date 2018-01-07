@@ -22,4 +22,14 @@ class User < ApplicationRecord
   def login
     @login || self.username || self.email
   end
+
+  def set_locale(locale)
+    self.locale = locale
+    self.save
+  end
+
+  def set_theme(color)
+    self.theme = color
+    self.save
+  end
 end
