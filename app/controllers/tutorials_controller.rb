@@ -2,6 +2,7 @@ class TutorialsController < ApplicationController
 
     before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
     before_action :authenticate_user!, except: [:search, :show, :index, :recent]
+    before_action :check_for_banned, only: [:new, :create, :edit]
 
     def index
         @tutorials = Tutorial.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
@@ -56,6 +57,12 @@ class TutorialsController < ApplicationController
     end
 
     private
+
+    def check_for_banned
+        if current_user.banned?
+            redirect_back fallback_location: root_path
+        end
+    end
 
     def tutorial_params
         # user = params.require(:tutorial).permit(:user) || current_user.id

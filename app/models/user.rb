@@ -44,7 +44,7 @@ class User < ApplicationRecord
   end
 
   def self.username_twitter(auth)
-    auth.name    
+    auth.info.name
   end
 
   def self.username_facebook(auth)

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :like]
+    before_action :authenticate_user!, only: [:create, :like, :destroy]
     before_action :find_commentable
+    before_action :check_for_banned, only: [:create, :like]
     before_action :check_for_admin, only: [:destroy]
     before_action :set_comment, only: [:destroy]
     before_action :set_comment_to_like, only: [:like]
@@ -44,6 +45,7 @@ class CommentsController < ApplicationController
 
     def check_for_admin
         user_signed_in? && current_user.admin?
+        
     end
 
     def set_comment
@@ -62,5 +64,11 @@ class CommentsController < ApplicationController
     def find_commentable
         @commentable = Tutorial.find_by_id(params[:tutorial_id])
         @tutorial = @commentable
+    end
+
+    def check_for_banned
+        if current_user.banned?
+            redirect_back fallback_location: root_path
+        end
     end
 end
