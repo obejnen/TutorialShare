@@ -45,8 +45,9 @@ ru:
     users: 'Пользователи'
     actions: 'Действия'
     tags: 'Теги'
+    top_rated_tutorials: 'Туториалы с наивысшей оценкой'
     site-color: 'Тема'
-    created_by: 'Создан'
+    created_by: 'Создал'
     all: "Все"
     sign:
       in: 'Войти'

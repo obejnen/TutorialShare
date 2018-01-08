@@ -1,8 +1,7 @@
 class TutorialsController < ApplicationController
 
     before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
-    before_action :authenticate_user!, except: [:search, :autocomplete, :show, :index, :recent]
-    before_action :force_json, only: [:search]
+    before_action :authenticate_user!, except: [:search, :show, :index, :recent]
 
     def index
         @tutorials = Tutorial.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
@@ -47,33 +46,26 @@ class TutorialsController < ApplicationController
         redirect_to tutorials_path, success: "Tutorial success deleted"
     end
 
-    def autocomplete
-        @tutorials = Tutorial.ransack(body_or_title_or_description_cont: params[:q]).result(distinct: true).limit(5)
-    end
-
     def search
         @tutorials = Tutorial.ransack(body_or_title_or_description_cont: params[:q]).result(distinct: true)
         @tutorials |= Comment.ransack(body_cont: params[:q]).result(distinct: true).map(&:tutorial)
         respond_to do |format|
-            format.html {}
-            format.json {
-                @tutorials
-            }
+            format.html { }
+            format.json { @tutorials }
         end
-        end
+    end
 
     private
 
     def tutorial_params
-        params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags, :category_id).merge(user_id: current_user.id)
+        # user = params.require(:tutorial).permit(:user) || current_user.id
+        # puts user
+        params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags, :category_id, :user_id)
+        # .merge(user_id: user)
     end
 
     def set_tutorial
         @tutorial = Tutorial.find(params[:id])
         @comments = @tutorial.comments
-    end
-
-    def force_json
-        request.format = :json
     end
 end

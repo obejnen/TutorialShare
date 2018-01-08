@@ -3,4 +3,5 @@ class Admin::CommentsController < Admin::AdminController
         @search = Comment.ransack(params[:q])
         @comments = @search.result
     end
+
 end

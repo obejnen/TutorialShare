@@ -1,0 +1,10 @@
+<% if @top_tutorials %>
+<div class="submenu">
+    <h2><%= t('common.top_rated_tutorials') %>:</h2>
+    <ul>
+        <% @top_tutorials.each do |tutorial| %>
+            <li class="top-li"><%= link_to tutorial.title[0..35]+"...", tutorial_path(tutorial), class: "title-link" %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>

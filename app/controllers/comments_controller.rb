@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :destroy, :like]
+    before_action :authenticate_user!, only: [:create, :like]
     before_action :find_commentable
+    before_action :check_for_admin, only: [:destroy]
     before_action :set_comment, only: [:destroy]
     before_action :set_comment_to_like, only: [:like]
     respond_to :js, :json, :html
@@ -12,15 +13,10 @@ class CommentsController < ApplicationController
     def create
         @comment = @commentable.comments.new(comment_params)
         @comment.save
-        # redirect_to @commentable
     end
 
     def index
         @comments = @commentable.comments
-    end
-
-    def show
-        @comment = Comment.find(params[:id])
     end
 
     def destroy
@@ -31,16 +27,24 @@ class CommentsController < ApplicationController
         end
     end
 
+
+    def show
+        @comment = Comment.find(params[:id])
+    end
+
     def like
         unless current_user.liked? @comment
             @comment.liked_by current_user
         else
             @comment.unliked_by current_user
         end
-        # redirect_to root_path
     end
 
     private
+
+    def check_for_admin
+        user_signed_in? && current_user.admin?
+    end
 
     def set_comment
         @comment = Comment.find(params[:id])
@@ -58,6 +62,5 @@ class CommentsController < ApplicationController
     def find_commentable
         @commentable = Tutorial.find_by_id(params[:tutorial_id])
         @tutorial = @commentable
-        #  if params[:tutorial_id]
     end
 end

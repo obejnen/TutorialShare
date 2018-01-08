@@ -9,6 +9,14 @@ module TutorialsHelper
         end
     end
 
+    def user_id(id)
+        if current_user.admin?
+            id || current_user.id
+        else
+            current_user.id
+        end
+    end
+
     def format_page(text)
         text = remove_tags(text)
         text = to_markdown(text)

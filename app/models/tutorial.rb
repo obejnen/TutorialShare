@@ -19,4 +19,10 @@ class Tutorial < ApplicationRecord
             Tag.where(name: name.strip).first_or_create!
         end
     end
+
+    def rating
+        stars = Rate.where(rateable_id: id, rateable_type: 'Tutorial').map {|tutorial| tutorial.stars}
+        stars_total = stars.inject(0){|sum,x| sum + x }
+        score = stars_total / (stars.count.nonzero? || 1)
+      end
 end

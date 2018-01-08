@@ -3,16 +3,16 @@
         <br>
         <ul class="nav nav-pills nav-stacked">
             <li class="<%= "active" if current_page?(admin_users_path) %>">
-                <%= link_to t('common.users'), admin_users_path(view_name: "admin"), class: "nav-item li-item-moved active" %>
+                <%= link_to t('common.users'), admin_users_path, class: "nav-item li-item-moved active" %>
             </li>
             <li class="<%= "active" if current_page?(admin_tutorials_path) %>">
-                <%= link_to t('common.tutorials'), admin_tutorials_path(view_name: "admin"), class: "nav-item li-item-moved" %>
+                <%= link_to t('common.tutorials'), admin_tutorials_path, class: "nav-item li-item-moved" %>
             </li>
             <li class="<%= "active" if current_page?(admin_comments_path) %>">
-                <%= link_to t('common.comments'), admin_comments_path(view_name: "admin"), class: "nav-item li-item-moved" %>
+                <%= link_to t('common.comments'), admin_comments_path, class: "nav-item li-item-moved" %>
             </li>
             <li class="<%= "active" if current_page?(admin_categories_path) %>">
-                <%= link_to t('common.categories'), admin_categories_path(view_name: "admin"), class: "nav-item li-item-moved" %>
+                <%= link_to t('common.categories'), admin_categories_path, class: "nav-item li-item-moved" %>
             </li>
         </ul>
     </div>

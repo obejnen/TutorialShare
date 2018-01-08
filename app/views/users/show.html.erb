@@ -1,5 +1,8 @@
 <div>
     <article>
+        <div class="right">
+            <%= link_to t('tutorials.new.title'), new_tutorial_path(user: @user), class: 'btn btn-primary' %>
+        </div>
         <%= render "profile_header" %>
         <section class="tutorial-body">
             <%= t('activerecord.models.email') %>: <%= @user.email %><br>

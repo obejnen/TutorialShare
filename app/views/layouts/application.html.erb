@@ -28,7 +28,7 @@
                     <li class="<%= 'active' if current_page?(tutorials_path) %>"><%= link_to t('navbar.tutorials'), tutorials_path %></li>
                 </ul>
                 <form class="navbar-form navbar-left">
-                    <%= form_with url: search_path, local: true, method: :get, html: { class: "navbar-form navbar-left navbar-form-inline" } do |f| %>
+                    <%= form_with url: search_path, local: true, method: :get, html: { class: "navbar-form input-group form-control-inline navbar-left navbar-form-inline" } do |f| %>
                         <%= f.text_field :q, placeholder: t('navbar.search'), data: { behavior: 'autocomplete' }, class: "form-control form-control-inline" %>
                     <% end %>
                 </form>
@@ -39,7 +39,7 @@
                             <ul class="dropdown-menu">
                                 <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
                                 <li><%= link_to t('navbar.new_tutorial'), new_tutorial_path %></li>
-                                <li><%= link_to t('navbar.admin_panel'), admin_panel_path(view_name: "admin") if current_user.admin? %></li>
+                                <li><%= link_to t('navbar.admin_panel'), admin_users_path if current_user.admin? %></li>
                                 <li role="separator" class="divider"></li>
                                 <li><div class="flags">
                                 <%= link_to set_locale_path(locale: 'ru'), method: :put do %>

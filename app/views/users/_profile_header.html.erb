@@ -4,4 +4,5 @@
     </h1>
     <%= link_to t('common.tutorials'), "/users/#{@user.id}/tutorials", class: "btn btn-sm btn-success" %>
     <%= link_to t('common.comments'), "/users/#{@user.id}/comments", class: "btn btn-sm btn-warning" %>
+    <%= link_to t('common.edit'), edit_user_registration_path, class: "btn btn-sm btn-danger" %>
 </section>
