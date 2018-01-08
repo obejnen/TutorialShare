@@ -1,4 +1,4 @@
-<h1><%= @tag.name %></h1>
+<h1><%= t('tags.results') %> <%= @tag.name %></h1>
 
 <% if @tag.tutorials.empty? %>
     <h2><%= t('tags.no_tutorials') %></h2>

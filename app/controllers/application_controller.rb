@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   DEFAULT_BASE_COLOR = "light"
-  DEFAULT_BOOTSTRAP_TEMPLATE = "inverse"
+  DEFAULT_BOOTSTRAP_TEMPLATE = "default"
   protect_from_forgery prepend: true
 
   add_flash_types :success, :danger, :warning, :info
@@ -56,7 +56,7 @@ end
     if user_signed_in?
       I18n.locale = current_user.locale
       @color = current_user.theme
-      @bootstrap_template = @color == "dark" ? 'default' : 'inverse'
+      @bootstrap_template = @color == "dark" ? 'inverse' : 'default'
     else
       I18n.locale = I18n.default_locale
       @color = DEFAULT_BASE_COLOR

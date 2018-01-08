@@ -12,11 +12,13 @@ en:
       title: 'Registration'
   tags:
     no_tutorials: 'No tutorials with this tag'
+    results: 'Tutorials with tag'
   comments:
     create_by: 'posted comment'
     new:
       submit: 'Create'
   categories:
+    results: 'Tutorials with category'
     new:
       title: 'New category'
     edit:

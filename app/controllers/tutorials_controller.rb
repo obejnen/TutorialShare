@@ -1,11 +1,11 @@
 class TutorialsController < ApplicationController
 
     before_action :set_tutorial, only: [ :show, :edit, :destroy, :update ]
-    before_action :authenticate_user!, except: [:search, :autocomplete, :show, :index]
+    before_action :authenticate_user!, except: [:search, :autocomplete, :show, :index, :recent]
     before_action :force_json, only: [:search]
 
     def index
-        @tutorials = Tutorial.paginate(page: params[:page], per_page: 5).order(updated_at: :desc)
+        @tutorials = Tutorial.paginate(page: params[:page], per_page: 5).order(created_at: :desc)
     end
 
     def show
@@ -13,6 +13,10 @@ class TutorialsController < ApplicationController
 
     def new
         @tutorial = Tutorial.new
+    end
+
+    def recent
+        @tutorials = Tutorial.paginate(page: params[:page], per_page: 5).order(updated_at: :desc)
     end
 
     def create
@@ -44,7 +48,7 @@ class TutorialsController < ApplicationController
     end
 
     def autocomplete
-        @tutorials = Tutorial.ransack(title_cont: params[:q]).result(distinct: true).limit(5)
+        @tutorials = Tutorial.ransack(body_or_title_or_description_cont: params[:q]).result(distinct: true).limit(5)
     end
 
     def search

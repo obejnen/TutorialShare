@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   mount ActionCable.server => '/cable'
+  root "tutorials#recent"
   
   post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :users
-  root "tutorials#index"
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   # resources :tutorials
   resources :pictures, only: [:create, :destroy]
   resources :tags, only: [ :show ]

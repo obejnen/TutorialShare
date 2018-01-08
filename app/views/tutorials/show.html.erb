@@ -5,6 +5,7 @@
             <%= @tutorial.title %>            
         </div>
         <div class="tutorial-info">
+            <%= render partial: "rating", locals: {tutorial: @tutorial} %>
             <%= t('common.created_by') %> <%= link_to @tutorial.user.username, user_path(@tutorial.user) %> 
                 <%= @tutorial.created_at.to_date.strftime('%d.%m.%Y') %>
                 |   <%= link_to @tutorial.category.name, @tutorial.category %>

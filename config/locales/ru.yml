@@ -12,11 +12,13 @@ ru:
       title: 'Регистрация'
   tags:
     no_tutorials: 'Туториалы с данным тегом отсутствуют'
+    results: 'Туториалы с тегом'
   comments:
     create_by: 'написал комментарий'
     new:
       submit: 'Создать'
   categories:
+    results: 'Туториалы категории'
     new:
       title: 'Новая категория'
     edit:

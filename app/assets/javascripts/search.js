@@ -15,10 +15,10 @@ $(document).ready(function() {
         onChooseEvent: function() {
           var url = $input.getSelectedItemData().url
           $input.val("")
-          Turbolinks.visit(url)
+          // Turbolinks.visit(url)
+          window.location = url
         }
-      },
-      theme: "dark"
+      }
     }
 
     $input.easyAutocomplete(options)

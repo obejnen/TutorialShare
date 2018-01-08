@@ -21,7 +21,7 @@ module TutorialsHelper
 
     def remove_tags(text)
     scrubber = Rails::Html::PermitScrubber.new
-    scrubber.tags = ['img']
+    scrubber.tags = ['img', 'a']
     Loofah.fragment(text).scrub!(scrubber).to_s
     end
 
