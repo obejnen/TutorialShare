@@ -1,24 +1,24 @@
 en:
   navbar:
-    tutorials: 'Tutorials'
+    tutorials: 'Blogs'
     home: 'Home'
     search: 'Search'
     profile: 'Profile'
     admin_panel: "Management"
     settings: 'Settings'
-    new_tutorial: 'New tutorial'
+    new_tutorial: 'New blog'
   registrations:
     new:
       title: 'Registration'
   tags:
-    no_tutorials: 'No tutorials with this tag'
-    results: 'Tutorials with tag'
+    no_tutorials: 'No blogs with this tag'
+    results: 'Blogs with tag'
   comments:
     create_by: 'posted comment'
     new:
       submit: 'Create'
   categories:
-    results: 'Tutorials with category'
+    results: 'Blogs with category'
     new:
       title: 'New category'
     edit:
@@ -28,12 +28,12 @@ en:
         '%{action} category'
   tutorials:
     new:
-      title: 'New tutorial'
+      title: 'New blog'
     edit:
-      title: 'Tutorial editing'
+      title: 'Blog editing'
     form:
       submit:
-        '%{action} tutorial'
+        '%{action} blog'
   common:
     errors: 'Form has been filled incorrectly'
     back: 'Back'
@@ -41,8 +41,8 @@ en:
     delete: 'Delete'
     categories: 'Categories'
     comments: 'Comments'
-    tutorials: 'Tutorials'
-    top_rated_tutorials: 'Top rated tutorials'
+    tutorials: 'Blogs'
+    top_rated_tutorials: 'Top rated blogs'
     users: 'Users'
     actions: 'Actions'
     site-color: 'Theme'
@@ -56,7 +56,7 @@ en:
   activerecord:
     models:
       category: 'Category'
-      tutorial: 'Tutorial'
+      tutorial: 'Blog'
       tag: 'Tag'
       comment: 'Comment'
       user: "User"
