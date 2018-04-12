@@ -1,24 +1,24 @@
 ru:
   navbar:
-    tutorials: 'Туториалы'
+    tutorials: 'Блоги'
     home: 'Домашняя'
     search: 'Поиск'
     profile: 'Профиль'
     admin_panel: "Управление"
     settings: 'Настройки'
-    new_tutorial: 'Новый туториал'
+    new_tutorial: 'Новый блог'
   registrations:
     new:
       title: 'Регистрация'
   tags:
-    no_tutorials: 'Туториалы с данным тегом отсутствуют'
-    results: 'Туториалы с тегом'
+    no_tutorials: 'Блоги с данным тегом отсутствуют'
+    results: 'Блоги с тегом'
   comments:
     create_by: 'написал комментарий'
     new:
       submit: 'Создать'
   categories:
-    results: 'Туториалы категории'
+    results: 'Блоги категории'
     new:
       title: 'Новая категория'
     edit:
@@ -28,12 +28,12 @@ ru:
         '%{action} категорию'
   tutorials:
     new:
-      title: 'Новый туториал'
+      title: 'Новый блог'
     edit:
-      title: 'Редактирование туториала'
+      title: 'Редактирование блога'
     form:
       submit:
-        '%{action} туториал'
+        '%{action} блог'
   common:
     errors: 'При заполнении формы возникли ошибки'
     back: 'Назад'
@@ -41,11 +41,11 @@ ru:
     delete: 'Удалить'
     categories: 'Категории'
     comments: 'Комментарии'
-    tutorials: 'Туториалы'
+    tutorials: 'Блоги'
     users: 'Пользователи'
     actions: 'Действия'
     tags: 'Теги'
-    top_rated_tutorials: 'Туториалы с наивысшей оценкой'
+    top_rated_tutorials: 'Блоги с наивысшей оценкой'
     site-color: 'Тема'
     created_by: 'Создал'
     all: "Все"
@@ -56,7 +56,7 @@ ru:
   activerecord:
     models:
       category: 'Категория'
-      tutorial: 'Туториал'
+      tutorial: 'Блог'
       tag: 'Тег'
       comment: 'Комментарий'
       user: "Пользователь"

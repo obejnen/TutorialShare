@@ -24,13 +24,11 @@ class Tutorial < ApplicationRecord
         stars = Rate.where(rateable_id: id, rateable_type: 'Tutorial').map {|tutorial| tutorial.stars}
         stars_total = stars.sum
         score = stars_total / (stars.count.nonzero? || 1)
-      end
+    end
 
+    def recent
         user = params.require(:tutorial).permit(:user_id)
         params.require(:tutorial).permit(:title, :description, :body, :image, :all_tags, :category_id).
         merge(user_id: user[:id] == current_user.id || current_user.admin? ? user[:id].to_i : current_user.id)
-
-
-
-
+    end
 end
