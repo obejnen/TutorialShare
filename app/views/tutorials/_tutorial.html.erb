@@ -1,8 +1,4 @@
 <div class="tutorial-preview">
-  <div class="info">
-    <%= t('common.created_by')%> <%= link_to tutorial.user.username, user_path(tutorial.user) %>
-    <%= tutorial.created_at.to_date.strftime("%d.%m.%Y") %><br>
-  </div>
   <div class="title">
     <%= link_to tutorial.title, tutorial_path(tutorial), class: "title-link" %>
   </div>
@@ -20,4 +16,8 @@
       </div>
     </div>
   <% end %>
+  <div class="info">
+    <%= t('common.created_by')%> <%= link_to tutorial.user.username, user_path(tutorial.user) %>
+    <%= tutorial.created_at.to_date.strftime("%d.%m.%Y") %><br>
+  </div>
 </div>

@@ -31,7 +31,7 @@
                 </ul>
                 <form class="navbar-form navbar-left">
                     <%= form_with url: search_path, local: true, method: :get, html: { class: "navbar-form input-group form-control-inline navbar-left navbar-form-inline" } do |f| %>
-                        <%= f.text_field :q, placeholder: t('navbar.search'), data: { behavior: 'autocomplete' }, class: "form-control form-control-inline" %>
+                        <%= f.text_field :q, placeholder: t('navbar.search'), data: { behavior: 'autocomplete' }, class: "search-field" %>
                     <% end %>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
